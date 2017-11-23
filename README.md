@@ -2,12 +2,11 @@
 **M306_TP_ProjetDeGroupe**
 
 **TP projet de groupe du _module 306_.**
-
 *But : Dérouler un projet informatique dans le cadre d'un groupe avec un objectif, des exigences, des ressources imposées et des délais clairement définis.*
 
 
 **Gestion de projet :**
-
+-
 Structurer le projet en phase (phase de conception, phase de réalisation et phase de présentation du projet).
 Appliquer les démarches méthodique du cours.
 Réaliser les documents du projet.
@@ -15,7 +14,7 @@ L'application informatique sert de mise en situation pratique. Une évaluation s
 
 
 **Exigences et résultats :**
-
+-
 Structurer le projet en phase (phase de conception, phase de réalisation et phase de présentation du projet).
 Appliquer les démarches méthodique du cours.
 Réaliser les documents du projet.
@@ -24,7 +23,7 @@ Gestion des séances (et des PV)
 
 
 **Remise des documents :**
-
+-
 Chaque groupe remet au format informatique (un fichier .zip) l'ensemble du projet :
 - Le document de gestion du projet
 - Le fichier de projet sous MS Project
@@ -40,5 +39,6 @@ L'évaluation porte également sur les réponses apportées aux questions.
 
 
 **Délais et échéances**
-Remise du projet : jeudi 11 janvier 2018 - 12h40
+-
+Remise du projet : jeudi 11 janvier 2018
 Présentation : 18 janvier 2018

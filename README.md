@@ -1,0 +1,2 @@
+# GeneratorGroupOfPeople
+M306_TP_ProjetDeGroupe

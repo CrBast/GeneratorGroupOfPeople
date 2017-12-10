@@ -30,14 +30,14 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sélectionnerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ouvrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redémmarerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arrêterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.outilsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.effacerContenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExportTxt = new System.Windows.Forms.Button();
             this.btnExportCsv = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpboxPath = new System.Windows.Forms.GroupBox();
             this.lblCheminSource = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.grpboxConfiguration = new System.Windows.Forms.GroupBox();
@@ -59,7 +59,7 @@
             this.Groupe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PersonneResultat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grpboxPath.SuspendLayout();
             this.grpboxConfiguration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdResultat)).BeginInit();
@@ -81,29 +81,30 @@
             // fichierToolStripMenuItem
             // 
             this.fichierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sélectionnerToolStripMenuItem,
+            this.ouvrirToolStripMenuItem,
             this.redémmarerToolStripMenuItem,
             this.arrêterToolStripMenuItem});
             this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
             this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.fichierToolStripMenuItem.Text = "Fichier";
             // 
-            // sélectionnerToolStripMenuItem
+            // ouvrirToolStripMenuItem
             // 
-            this.sélectionnerToolStripMenuItem.Name = "sélectionnerToolStripMenuItem";
-            this.sélectionnerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.sélectionnerToolStripMenuItem.Text = "Ouvrir";
+            this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
+            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ouvrirToolStripMenuItem.Text = "Ouvrir";
+            this.ouvrirToolStripMenuItem.Click += new System.EventHandler(this.ouvrirToolStripMenuItem_Click);
             // 
             // redémmarerToolStripMenuItem
             // 
             this.redémmarerToolStripMenuItem.Name = "redémmarerToolStripMenuItem";
-            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.redémmarerToolStripMenuItem.Text = "Redémmarrer";
             // 
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.arrêterToolStripMenuItem.Text = "Quitter";
             // 
             // outilsToolStripMenuItem
@@ -138,15 +139,15 @@
             this.btnExportCsv.Text = "Exporter au format csv";
             this.btnExportCsv.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // grpboxPath
             // 
-            this.groupBox1.Controls.Add(this.lblCheminSource);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox1.Location = new System.Drawing.Point(258, 341);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(293, 69);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
+            this.grpboxPath.Controls.Add(this.lblCheminSource);
+            this.grpboxPath.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grpboxPath.Location = new System.Drawing.Point(258, 341);
+            this.grpboxPath.Name = "grpboxPath";
+            this.grpboxPath.Size = new System.Drawing.Size(293, 69);
+            this.grpboxPath.TabIndex = 6;
+            this.grpboxPath.TabStop = false;
             // 
             // lblCheminSource
             // 
@@ -348,7 +349,7 @@
             this.PersonneResultat.Name = "PersonneResultat";
             this.PersonneResultat.Width = 198;
             // 
-            // frmMain
+            // FrmMain
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,17 +362,17 @@
             this.Controls.Add(this.dtagrdSource);
             this.Controls.Add(this.grpboxConfiguration);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpboxPath);
             this.Controls.Add(this.btnExportCsv);
             this.Controls.Add(this.btnExportTxt);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "frmMain";
+            this.Name = "FrmMain";
             this.Text = "Générateur de groupe";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpboxPath.ResumeLayout(false);
+            this.grpboxPath.PerformLayout();
             this.grpboxConfiguration.ResumeLayout(false);
             this.grpboxConfiguration.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdSource)).EndInit();
@@ -385,14 +386,14 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sélectionnerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ouvrirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redémmarerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem arrêterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem outilsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem effacerContenuToolStripMenuItem;
         private System.Windows.Forms.Button btnExportTxt;
         private System.Windows.Forms.Button btnExportCsv;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpboxPath;
         private System.Windows.Forms.Label lblCheminSource;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox grpboxConfiguration;

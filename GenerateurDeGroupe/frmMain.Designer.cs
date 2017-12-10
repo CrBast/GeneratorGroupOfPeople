@@ -37,8 +37,6 @@
             this.effacerContenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExportTxt = new System.Windows.Forms.Button();
             this.btnExportCsv = new System.Windows.Forms.Button();
-            this.grpboxPath = new System.Windows.Forms.GroupBox();
-            this.lblCheminSource = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.grpboxConfiguration = new System.Windows.Forms.GroupBox();
             this.lblCroissantStatic = new System.Windows.Forms.Label();
@@ -58,11 +56,13 @@
             this.dtagrdResultat = new System.Windows.Forms.DataGridView();
             this.Groupe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PersonneResultat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblCheminSource = new System.Windows.Forms.Label();
+            this.panelDragAndDrop = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
-            this.grpboxPath.SuspendLayout();
             this.grpboxConfiguration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdResultat)).BeginInit();
+            this.panelDragAndDrop.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -91,20 +91,20 @@
             // ouvrirToolStripMenuItem
             // 
             this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
-            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.ouvrirToolStripMenuItem.Text = "Ouvrir";
             this.ouvrirToolStripMenuItem.Click += new System.EventHandler(this.ouvrirToolStripMenuItem_Click);
             // 
             // redémmarerToolStripMenuItem
             // 
             this.redémmarerToolStripMenuItem.Name = "redémmarerToolStripMenuItem";
-            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.redémmarerToolStripMenuItem.Text = "Redémmarrer";
             // 
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.arrêterToolStripMenuItem.Text = "Quitter";
             // 
             // outilsToolStripMenuItem
@@ -138,27 +138,6 @@
             this.btnExportCsv.TabIndex = 5;
             this.btnExportCsv.Text = "Exporter au format csv";
             this.btnExportCsv.UseVisualStyleBackColor = true;
-            // 
-            // grpboxPath
-            // 
-            this.grpboxPath.Controls.Add(this.lblCheminSource);
-            this.grpboxPath.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grpboxPath.Location = new System.Drawing.Point(258, 341);
-            this.grpboxPath.Name = "grpboxPath";
-            this.grpboxPath.Size = new System.Drawing.Size(293, 69);
-            this.grpboxPath.TabIndex = 6;
-            this.grpboxPath.TabStop = false;
-            // 
-            // lblCheminSource
-            // 
-            this.lblCheminSource.AutoSize = true;
-            this.lblCheminSource.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblCheminSource.Location = new System.Drawing.Point(42, 32);
-            this.lblCheminSource.Name = "lblCheminSource";
-            this.lblCheminSource.Size = new System.Drawing.Size(202, 13);
-            this.lblCheminSource.TabIndex = 0;
-            this.lblCheminSource.Text = "C:\\Users\\creb\\Documents\\personnes.txt";
-            this.lblCheminSource.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -349,12 +328,35 @@
             this.PersonneResultat.Name = "PersonneResultat";
             this.PersonneResultat.Width = 198;
             // 
+            // lblCheminSource
+            // 
+            this.lblCheminSource.AutoSize = true;
+            this.lblCheminSource.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblCheminSource.Location = new System.Drawing.Point(39, 21);
+            this.lblCheminSource.Name = "lblCheminSource";
+            this.lblCheminSource.Size = new System.Drawing.Size(202, 13);
+            this.lblCheminSource.TabIndex = 0;
+            this.lblCheminSource.Text = "C:\\Users\\creb\\Documents\\personnes.txt";
+            this.lblCheminSource.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelDragAndDrop
+            // 
+            this.panelDragAndDrop.AllowDrop = true;
+            this.panelDragAndDrop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDragAndDrop.Controls.Add(this.lblCheminSource);
+            this.panelDragAndDrop.Location = new System.Drawing.Point(258, 351);
+            this.panelDragAndDrop.Name = "panelDragAndDrop";
+            this.panelDragAndDrop.Size = new System.Drawing.Size(293, 59);
+            this.panelDragAndDrop.TabIndex = 20;
+            this.panelDragAndDrop.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDragAndDrop_DragDrop);
+            this.panelDragAndDrop.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDragAndDrop_DragEnter);
+            // 
             // FrmMain
             // 
-            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 438);
+            this.Controls.Add(this.panelDragAndDrop);
             this.Controls.Add(this.lblResultatStatic);
             this.Controls.Add(this.dtagrdResultat);
             this.Controls.Add(this.lblNombrePersonnes);
@@ -362,7 +364,6 @@
             this.Controls.Add(this.dtagrdSource);
             this.Controls.Add(this.grpboxConfiguration);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.grpboxPath);
             this.Controls.Add(this.btnExportCsv);
             this.Controls.Add(this.btnExportTxt);
             this.Controls.Add(this.menuStrip1);
@@ -371,12 +372,12 @@
             this.Text = "Générateur de groupe";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.grpboxPath.ResumeLayout(false);
-            this.grpboxPath.PerformLayout();
             this.grpboxConfiguration.ResumeLayout(false);
             this.grpboxConfiguration.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdResultat)).EndInit();
+            this.panelDragAndDrop.ResumeLayout(false);
+            this.panelDragAndDrop.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -393,8 +394,6 @@
         private System.Windows.Forms.ToolStripMenuItem effacerContenuToolStripMenuItem;
         private System.Windows.Forms.Button btnExportTxt;
         private System.Windows.Forms.Button btnExportCsv;
-        private System.Windows.Forms.GroupBox grpboxPath;
-        private System.Windows.Forms.Label lblCheminSource;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox grpboxConfiguration;
         private System.Windows.Forms.TextBox textBox1;
@@ -414,6 +413,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Personne;
         private System.Windows.Forms.DataGridViewTextBoxColumn Groupe;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersonneResultat;
+        private System.Windows.Forms.Label lblCheminSource;
+        private System.Windows.Forms.Panel panelDragAndDrop;
     }
 }
 

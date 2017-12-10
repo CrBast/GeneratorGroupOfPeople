@@ -14,6 +14,8 @@ namespace Maquette_1
 {
     public partial class FrmMain : Form
     {
+        string sPath = "";
+
         public FrmMain()
         {
             InitializeComponent();
@@ -21,8 +23,20 @@ namespace Maquette_1
 
         private void ouvrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            lblCheminSource.Text = fileAction.find();
+            sPath = fileAction.find();
+            lblCheminSource.Text = sPath;
             fileAction.writeConfig(lblCheminSource.Text);
+        }
+
+        private void panelDragAndDrop_DragDrop(object sender, DragEventArgs e)
+        {
+            lblCheminSource.Text = e.Data.GetData(DataFormats.Text).ToString();
+            ///lblCheminSource.Text = sPath;
+        }
+
+        private void panelDragAndDrop_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Link;
         }
     }
 }

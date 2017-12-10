@@ -16,7 +16,7 @@ namespace Maquette_1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new form1());
+            Application.Run(new FrmMain());
         }
     }
 }

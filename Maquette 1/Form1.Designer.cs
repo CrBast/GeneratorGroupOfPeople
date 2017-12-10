@@ -1,6 +1,6 @@
 ﻿namespace Maquette_1
 {
-    partial class form1
+    partial class FrmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -35,35 +35,34 @@
             this.arrêterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.outilsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.effacerContenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnExportTxt = new System.Windows.Forms.Button();
+            this.btnExportCsv = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCheminSource = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.grpboxConfiguration = new System.Windows.Forms.GroupBox();
+            this.lblCroissantStatic = new System.Windows.Forms.Label();
+            this.chkboxCroissant = new System.Windows.Forms.CheckBox();
+            this.lblAleatoirementStatic = new System.Windows.Forms.Label();
+            this.chkboxAleatoire = new System.Windows.Forms.CheckBox();
+            this.lblCreationDesGroupesStatic = new System.Windows.Forms.Label();
+            this.rdobtnNombreDeGroupes = new System.Windows.Forms.RadioButton();
+            this.rdobtnPersonnesParGroupe = new System.Windows.Forms.RadioButton();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtagrdSource = new System.Windows.Forms.DataGridView();
             this.Personne = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblFichierSourceStatic = new System.Windows.Forms.Label();
+            this.lblNombrePersonnes = new System.Windows.Forms.Label();
+            this.lblResultatStatic = new System.Windows.Forms.Label();
+            this.dtagrdResultat = new System.Windows.Forms.DataGridView();
             this.Groupe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PersonneResultat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.grpboxConfiguration.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtagrdSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtagrdResultat)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -121,28 +120,27 @@
             this.effacerContenuToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.effacerContenuToolStripMenuItem.Text = "Effacer contenu";
             // 
-            // button1
+            // btnExportTxt
             // 
-            this.button1.Location = new System.Drawing.Point(258, 52);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(293, 34);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Exporter au format texte";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnExportTxt.Location = new System.Drawing.Point(258, 52);
+            this.btnExportTxt.Name = "btnExportTxt";
+            this.btnExportTxt.Size = new System.Drawing.Size(293, 34);
+            this.btnExportTxt.TabIndex = 4;
+            this.btnExportTxt.Text = "Exporter au format texte";
+            this.btnExportTxt.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnExportCsv
             // 
-            this.button2.Location = new System.Drawing.Point(258, 92);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(293, 34);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Exporter au format csv";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnExportCsv.Location = new System.Drawing.Point(258, 92);
+            this.btnExportCsv.Name = "btnExportCsv";
+            this.btnExportCsv.Size = new System.Drawing.Size(293, 34);
+            this.btnExportCsv.TabIndex = 5;
+            this.btnExportCsv.Text = "Exporter au format csv";
+            this.btnExportCsv.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblCheminSource);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox1.Location = new System.Drawing.Point(258, 341);
             this.groupBox1.Name = "groupBox1";
@@ -150,16 +148,16 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
-            // label1
+            // lblCheminSource
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(42, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "C:\\Users\\creb\\Documents\\personnes.txt";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCheminSource.AutoSize = true;
+            this.lblCheminSource.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblCheminSource.Location = new System.Drawing.Point(42, 32);
+            this.lblCheminSource.Name = "lblCheminSource";
+            this.lblCheminSource.Size = new System.Drawing.Size(202, 13);
+            this.lblCheminSource.TabIndex = 0;
+            this.lblCheminSource.Text = "C:\\Users\\creb\\Documents\\personnes.txt";
+            this.lblCheminSource.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -169,91 +167,91 @@
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 7;
             // 
-            // groupBox2
+            // grpboxConfiguration
             // 
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.checkBox3);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox2.Location = new System.Drawing.Point(258, 135);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(293, 200);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Configuration";
+            this.grpboxConfiguration.Controls.Add(this.lblCroissantStatic);
+            this.grpboxConfiguration.Controls.Add(this.chkboxCroissant);
+            this.grpboxConfiguration.Controls.Add(this.lblAleatoirementStatic);
+            this.grpboxConfiguration.Controls.Add(this.chkboxAleatoire);
+            this.grpboxConfiguration.Controls.Add(this.lblCreationDesGroupesStatic);
+            this.grpboxConfiguration.Controls.Add(this.rdobtnNombreDeGroupes);
+            this.grpboxConfiguration.Controls.Add(this.rdobtnPersonnesParGroupe);
+            this.grpboxConfiguration.Controls.Add(this.textBox3);
+            this.grpboxConfiguration.Controls.Add(this.textBox1);
+            this.grpboxConfiguration.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.grpboxConfiguration.Location = new System.Drawing.Point(258, 135);
+            this.grpboxConfiguration.Name = "grpboxConfiguration";
+            this.grpboxConfiguration.Size = new System.Drawing.Size(293, 200);
+            this.grpboxConfiguration.TabIndex = 8;
+            this.grpboxConfiguration.TabStop = false;
+            this.grpboxConfiguration.Text = "Configuration";
             // 
-            // label7
+            // lblCroissantStatic
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(125, 146);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 15);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Croissant";
+            this.lblCroissantStatic.AutoSize = true;
+            this.lblCroissantStatic.Location = new System.Drawing.Point(125, 146);
+            this.lblCroissantStatic.Name = "lblCroissantStatic";
+            this.lblCroissantStatic.Size = new System.Drawing.Size(58, 15);
+            this.lblCroissantStatic.TabIndex = 19;
+            this.lblCroissantStatic.Text = "Croissant";
             // 
-            // checkBox3
+            // chkboxCroissant
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(239, 147);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(15, 14);
-            this.checkBox3.TabIndex = 18;
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.chkboxCroissant.AutoSize = true;
+            this.chkboxCroissant.Location = new System.Drawing.Point(239, 147);
+            this.chkboxCroissant.Name = "chkboxCroissant";
+            this.chkboxCroissant.Size = new System.Drawing.Size(15, 14);
+            this.chkboxCroissant.TabIndex = 18;
+            this.chkboxCroissant.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // lblAleatoirementStatic
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(125, 131);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 15);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Aléatoirement";
+            this.lblAleatoirementStatic.AutoSize = true;
+            this.lblAleatoirementStatic.Location = new System.Drawing.Point(125, 131);
+            this.lblAleatoirementStatic.Name = "lblAleatoirementStatic";
+            this.lblAleatoirementStatic.Size = new System.Drawing.Size(83, 15);
+            this.lblAleatoirementStatic.TabIndex = 17;
+            this.lblAleatoirementStatic.Text = "Aléatoirement";
             // 
-            // checkBox1
+            // chkboxAleatoire
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(239, 132);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 16;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkboxAleatoire.AutoSize = true;
+            this.chkboxAleatoire.Location = new System.Drawing.Point(239, 132);
+            this.chkboxAleatoire.Name = "chkboxAleatoire";
+            this.chkboxAleatoire.Size = new System.Drawing.Size(15, 14);
+            this.chkboxAleatoire.TabIndex = 16;
+            this.chkboxAleatoire.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // lblCreationDesGroupesStatic
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 112);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 15);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Création des groupes :";
+            this.lblCreationDesGroupesStatic.AutoSize = true;
+            this.lblCreationDesGroupesStatic.Location = new System.Drawing.Point(3, 112);
+            this.lblCreationDesGroupesStatic.Name = "lblCreationDesGroupesStatic";
+            this.lblCreationDesGroupesStatic.Size = new System.Drawing.Size(130, 15);
+            this.lblCreationDesGroupesStatic.TabIndex = 14;
+            this.lblCreationDesGroupesStatic.Text = "Création des groupes :";
             // 
-            // radioButton2
+            // rdobtnNombreDeGroupes
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 81);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(135, 19);
-            this.radioButton2.TabIndex = 13;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Nombre de groupes";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdobtnNombreDeGroupes.AutoSize = true;
+            this.rdobtnNombreDeGroupes.Location = new System.Drawing.Point(6, 81);
+            this.rdobtnNombreDeGroupes.Name = "rdobtnNombreDeGroupes";
+            this.rdobtnNombreDeGroupes.Size = new System.Drawing.Size(135, 19);
+            this.rdobtnNombreDeGroupes.TabIndex = 13;
+            this.rdobtnNombreDeGroupes.TabStop = true;
+            this.rdobtnNombreDeGroupes.Text = "Nombre de groupes";
+            this.rdobtnNombreDeGroupes.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rdobtnPersonnesParGroupe
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 44);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(217, 19);
-            this.radioButton1.TabIndex = 12;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Nombre de personnes par groupes";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdobtnPersonnesParGroupe.AutoSize = true;
+            this.rdobtnPersonnesParGroupe.Location = new System.Drawing.Point(6, 44);
+            this.rdobtnPersonnesParGroupe.Name = "rdobtnPersonnesParGroupe";
+            this.rdobtnPersonnesParGroupe.Size = new System.Drawing.Size(217, 19);
+            this.rdobtnPersonnesParGroupe.TabIndex = 12;
+            this.rdobtnPersonnesParGroupe.TabStop = true;
+            this.rdobtnPersonnesParGroupe.Text = "Nombre de personnes par groupes";
+            this.rdobtnPersonnesParGroupe.UseVisualStyleBackColor = true;
             // 
             // textBox3
             // 
@@ -275,70 +273,68 @@
             this.textBox1.Text = "3";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // dataGridView2
+            // dtagrdSource
             // 
-            this.dataGridView2.AllowUserToOrderColumns = true;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtagrdSource.AllowUserToOrderColumns = true;
+            this.dtagrdSource.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtagrdSource.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Personne});
-            this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridView2.Location = new System.Drawing.Point(12, 52);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dataGridView2.Size = new System.Drawing.Size(236, 358);
-            this.dataGridView2.TabIndex = 9;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(9, 33);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(98, 16);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Fichier source :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 416);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 16);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Nombre de personnes : 7";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(557, 34);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(63, 16);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Résultat :";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Groupe,
-            this.PersonneResultat});
-            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridView1.Location = new System.Drawing.Point(560, 52);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dataGridView1.Size = new System.Drawing.Size(302, 358);
-            this.dataGridView1.TabIndex = 18;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            this.dtagrdSource.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dtagrdSource.Location = new System.Drawing.Point(12, 52);
+            this.dtagrdSource.Name = "dtagrdSource";
+            this.dtagrdSource.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dtagrdSource.Size = new System.Drawing.Size(236, 358);
+            this.dtagrdSource.TabIndex = 9;
             // 
             // Personne
             // 
             this.Personne.HeaderText = "Personne";
             this.Personne.Name = "Personne";
             this.Personne.Width = 192;
+            // 
+            // lblFichierSourceStatic
+            // 
+            this.lblFichierSourceStatic.AutoSize = true;
+            this.lblFichierSourceStatic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFichierSourceStatic.Location = new System.Drawing.Point(9, 33);
+            this.lblFichierSourceStatic.Name = "lblFichierSourceStatic";
+            this.lblFichierSourceStatic.Size = new System.Drawing.Size(98, 16);
+            this.lblFichierSourceStatic.TabIndex = 15;
+            this.lblFichierSourceStatic.Text = "Fichier source :";
+            // 
+            // lblNombrePersonnes
+            // 
+            this.lblNombrePersonnes.AutoSize = true;
+            this.lblNombrePersonnes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombrePersonnes.Location = new System.Drawing.Point(9, 416);
+            this.lblNombrePersonnes.Name = "lblNombrePersonnes";
+            this.lblNombrePersonnes.Size = new System.Drawing.Size(159, 16);
+            this.lblNombrePersonnes.TabIndex = 17;
+            this.lblNombrePersonnes.Text = "Nombre de personnes : 7";
+            // 
+            // lblResultatStatic
+            // 
+            this.lblResultatStatic.AutoSize = true;
+            this.lblResultatStatic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResultatStatic.Location = new System.Drawing.Point(557, 34);
+            this.lblResultatStatic.Name = "lblResultatStatic";
+            this.lblResultatStatic.Size = new System.Drawing.Size(63, 16);
+            this.lblResultatStatic.TabIndex = 19;
+            this.lblResultatStatic.Text = "Résultat :";
+            // 
+            // dtagrdResultat
+            // 
+            this.dtagrdResultat.AllowUserToOrderColumns = true;
+            this.dtagrdResultat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtagrdResultat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Groupe,
+            this.PersonneResultat});
+            this.dtagrdResultat.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dtagrdResultat.Location = new System.Drawing.Point(560, 52);
+            this.dtagrdResultat.Name = "dtagrdResultat";
+            this.dtagrdResultat.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dtagrdResultat.Size = new System.Drawing.Size(302, 358);
+            this.dtagrdResultat.TabIndex = 18;
             // 
             // Groupe
             // 
@@ -352,36 +348,34 @@
             this.PersonneResultat.Name = "PersonneResultat";
             this.PersonneResultat.Width = 198;
             // 
-            // form1
+            // frmMain
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 438);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.lblResultatStatic);
+            this.Controls.Add(this.dtagrdResultat);
+            this.Controls.Add(this.lblNombrePersonnes);
+            this.Controls.Add(this.lblFichierSourceStatic);
+            this.Controls.Add(this.dtagrdSource);
+            this.Controls.Add(this.grpboxConfiguration);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnExportCsv);
+            this.Controls.Add(this.btnExportTxt);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "form1";
+            this.Name = "frmMain";
             this.Text = "Générateur de groupe";
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.form1_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.form1_DragEnter);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.grpboxConfiguration.ResumeLayout(false);
+            this.grpboxConfiguration.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtagrdSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtagrdResultat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -396,27 +390,26 @@
         private System.Windows.Forms.ToolStripMenuItem arrêterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem outilsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem effacerContenuToolStripMenuItem;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnExportTxt;
+        private System.Windows.Forms.Button btnExportCsv;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCheminSource;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpboxConfiguration;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rdobtnNombreDeGroupes;
+        private System.Windows.Forms.RadioButton rdobtnPersonnesParGroupe;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label10;
-        public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblCroissantStatic;
+        private System.Windows.Forms.CheckBox chkboxCroissant;
+        private System.Windows.Forms.Label lblAleatoirementStatic;
+        private System.Windows.Forms.CheckBox chkboxAleatoire;
+        private System.Windows.Forms.Label lblCreationDesGroupesStatic;
+        public System.Windows.Forms.DataGridView dtagrdSource;
+        private System.Windows.Forms.Label lblFichierSourceStatic;
+        private System.Windows.Forms.Label lblNombrePersonnes;
+        private System.Windows.Forms.Label lblResultatStatic;
+        public System.Windows.Forms.DataGridView dtagrdResultat;
         private System.Windows.Forms.DataGridViewTextBoxColumn Personne;
         private System.Windows.Forms.DataGridViewTextBoxColumn Groupe;
         private System.Windows.Forms.DataGridViewTextBoxColumn PersonneResultat;

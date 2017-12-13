@@ -129,6 +129,7 @@
             this.btnExportTxt.TabIndex = 4;
             this.btnExportTxt.Text = "Exporter au format texte";
             this.btnExportTxt.UseVisualStyleBackColor = true;
+            this.btnExportTxt.Click += new System.EventHandler(this.btnExportTxt_Click);
             // 
             // btnExportCsv
             // 
@@ -265,6 +266,8 @@
             this.dtagrdSource.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtagrdSource.Size = new System.Drawing.Size(236, 358);
             this.dtagrdSource.TabIndex = 9;
+            this.dtagrdSource.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dtagrdSource_RowsAdded);
+            this.dtagrdSource.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dtagrdSource_RowsRemoved);
             // 
             // Personne
             // 

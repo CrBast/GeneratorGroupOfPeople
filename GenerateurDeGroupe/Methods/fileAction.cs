@@ -42,11 +42,27 @@ namespace GenerateurDeGroupe
         }
 
 
-        public static void writeConfig(string sPath)
+        public static void write(string sPath, string sContent)
         {
-            FileStream maFileStream = new FileStream(@".\config.config", FileMode.Create);  // ouverture du canal de communication (flux)
+            FileStream maFileStream = new FileStream(sPath, FileMode.Create);  // ouverture du canal de communication (flux)
             StreamWriter monStreamWriter = new StreamWriter(maFileStream, ASCIIEncoding.Default);  // mode écriture
-            monStreamWriter.Write(sPath);
+            monStreamWriter.Write(sContent);
+            monStreamWriter.Close();
+            maFileStream.Close();
+        }
+
+        public static string read(string sPath)
+        {
+            // TO DO
+            string sContentText = "";
+            return(sContentText);
+        }
+
+        public static void writeConfig(string sConfigPath)// to do
+        {
+            FileStream maFileStream = new FileStream(@"./config.conf", FileMode.Create);  // ouverture du canal de communication (flux)
+            StreamWriter monStreamWriter = new StreamWriter(maFileStream, ASCIIEncoding.Default);  // mode écriture
+            monStreamWriter.Write(sConfigPath);
             monStreamWriter.Close();
             maFileStream.Close();
         }

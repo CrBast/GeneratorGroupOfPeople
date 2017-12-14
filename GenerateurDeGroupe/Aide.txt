@@ -1,0 +1,13 @@
+//Création d'un DataTable
+//Affectation de la source DataTable à la dtagrdSource
+DataTable mainDataTable = new DataTable();
+mainDataTable.Columns.Add("Peronnes");
+mainDataTable.Rows.Add("Test1");
+mainDataTable.Rows.Add("Test2");
+mainDataTable.Rows.Add("Test3");
+mainDataTable.Rows.Add("Test4");
+mainDataTable.Rows.Add("Test5");
+dtagrdSource.DataSource = mainDataTable;
+dtagrdSource.Columns[0].Width = 190;
+lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}";
+//######################################################################################################

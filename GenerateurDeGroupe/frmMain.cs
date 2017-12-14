@@ -25,50 +25,31 @@ namespace Maquette_1
         {
             sPath = fileAction.find();
             lblCheminSource.Text = sPath;
-            fileAction.write(lblCheminSource.Text, sPath);
         }
 
         private void panelDragAndDrop_DragDrop(object sender, DragEventArgs e)
         {
-            lblCheminSource.Text = e.Data.GetData(DataFormats.Text).ToString();
-            ///lblCheminSource.Text = sPath;
+            // "Bastien" -> je m'en occupe
         }
 
         private void panelDragAndDrop_DragEnter(object sender, DragEventArgs e)
         {
-            e.Effect = DragDropEffects.Link;
+            // "Bastien" -> je m'en occupe
         }
 
         private void btnExportTxt_Click(object sender, EventArgs e)//TEST
         {
-            //Juste pour test
-            string[] aTest = new string[12];
-            List<string> lTest = new List<string>
-            {//Affectation des valeurs:
-                "test1",
-                "Youtube23",
-                "Youtube2131",
-                "Youtube232",
-                "Youtube8756",
-                "Youtube0"
-            };
-            foreach (string sTexte in lTest)//Pour chaques éléments de la liste
-            {
-                this.dtagrdSource.Rows.Add(sTexte);//Affiche dans une nouvelle ligne
-            }
-            lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}";//Test
+            
         }
 
-        private void dtagrdSource_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void dtagrdSource_Click(object sender, EventArgs e)
         {
-            //Juste pour test
-            lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}";//Affiche les nombre de lignes de la datagrid
+            lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}";
         }
 
-        private void dtagrdSource_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)//Test
+        private void dtagrdSource_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            //Juste pour test
-            lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}";//Affiche les nombre de lignes de la datagrid
+            lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}";
         }
     }
 }

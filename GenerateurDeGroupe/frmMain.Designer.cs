@@ -49,15 +49,13 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dtagrdSource = new System.Windows.Forms.DataGridView();
-            this.Personne = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFichierSourceStatic = new System.Windows.Forms.Label();
             this.lblNombrePersonnes = new System.Windows.Forms.Label();
             this.lblResultatStatic = new System.Windows.Forms.Label();
             this.dtagrdResultat = new System.Windows.Forms.DataGridView();
-            this.Groupe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PersonneResultat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCheminSource = new System.Windows.Forms.Label();
             this.panelDragAndDrop = new System.Windows.Forms.Panel();
+            this.btnValidationSource = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.grpboxConfiguration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdSource)).BeginInit();
@@ -150,6 +148,7 @@
             // 
             // grpboxConfiguration
             // 
+            this.grpboxConfiguration.Controls.Add(this.btnValidationSource);
             this.grpboxConfiguration.Controls.Add(this.lblCroissantStatic);
             this.grpboxConfiguration.Controls.Add(this.chkboxCroissant);
             this.grpboxConfiguration.Controls.Add(this.lblAleatoirementStatic);
@@ -162,7 +161,7 @@
             this.grpboxConfiguration.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.grpboxConfiguration.Location = new System.Drawing.Point(258, 135);
             this.grpboxConfiguration.Name = "grpboxConfiguration";
-            this.grpboxConfiguration.Size = new System.Drawing.Size(293, 200);
+            this.grpboxConfiguration.Size = new System.Drawing.Size(293, 210);
             this.grpboxConfiguration.TabIndex = 8;
             this.grpboxConfiguration.TabStop = false;
             this.grpboxConfiguration.Text = "Configuration";
@@ -258,22 +257,14 @@
             // 
             this.dtagrdSource.AllowUserToOrderColumns = true;
             this.dtagrdSource.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtagrdSource.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Personne});
             this.dtagrdSource.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtagrdSource.Location = new System.Drawing.Point(12, 52);
             this.dtagrdSource.Name = "dtagrdSource";
             this.dtagrdSource.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtagrdSource.Size = new System.Drawing.Size(236, 358);
             this.dtagrdSource.TabIndex = 9;
-            this.dtagrdSource.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dtagrdSource_RowsAdded);
-            this.dtagrdSource.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dtagrdSource_RowsRemoved);
-            // 
-            // Personne
-            // 
-            this.Personne.HeaderText = "Personne";
-            this.Personne.Name = "Personne";
-            this.Personne.Width = 192;
+            this.dtagrdSource.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtagrdSource_RowEnter);
+            this.dtagrdSource.Click += new System.EventHandler(this.dtagrdSource_Click);
             // 
             // lblFichierSourceStatic
             // 
@@ -293,7 +284,7 @@
             this.lblNombrePersonnes.Name = "lblNombrePersonnes";
             this.lblNombrePersonnes.Size = new System.Drawing.Size(159, 16);
             this.lblNombrePersonnes.TabIndex = 17;
-            this.lblNombrePersonnes.Text = "Nombre de personnes : 7";
+            this.lblNombrePersonnes.Text = "Nombre de personnes : 0";
             // 
             // lblResultatStatic
             // 
@@ -309,27 +300,12 @@
             // 
             this.dtagrdResultat.AllowUserToOrderColumns = true;
             this.dtagrdResultat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtagrdResultat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Groupe,
-            this.PersonneResultat});
             this.dtagrdResultat.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtagrdResultat.Location = new System.Drawing.Point(560, 52);
             this.dtagrdResultat.Name = "dtagrdResultat";
             this.dtagrdResultat.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtagrdResultat.Size = new System.Drawing.Size(302, 358);
             this.dtagrdResultat.TabIndex = 18;
-            // 
-            // Groupe
-            // 
-            this.Groupe.HeaderText = "Groupe";
-            this.Groupe.Name = "Groupe";
-            this.Groupe.Width = 60;
-            // 
-            // PersonneResultat
-            // 
-            this.PersonneResultat.HeaderText = "Personne";
-            this.PersonneResultat.Name = "PersonneResultat";
-            this.PersonneResultat.Width = 198;
             // 
             // lblCheminSource
             // 
@@ -353,6 +329,17 @@
             this.panelDragAndDrop.TabIndex = 20;
             this.panelDragAndDrop.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDragAndDrop_DragDrop);
             this.panelDragAndDrop.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDragAndDrop_DragEnter);
+            // 
+            // btnValidationSource
+            // 
+            this.btnValidationSource.Location = new System.Drawing.Point(35, 174);
+            this.btnValidationSource.Name = "btnValidationSource";
+            this.btnValidationSource.Size = new System.Drawing.Size(223, 26);
+            this.btnValidationSource.TabIndex = 20;
+            this.btnValidationSource.Text = "Valider la source";
+            this.btnValidationSource.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnValidationSource.UseVisualStyleBackColor = true;
+            this.btnValidationSource.Visible = false;
             // 
             // FrmMain
             // 
@@ -413,11 +400,9 @@
         private System.Windows.Forms.Label lblNombrePersonnes;
         private System.Windows.Forms.Label lblResultatStatic;
         public System.Windows.Forms.DataGridView dtagrdResultat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Personne;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Groupe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PersonneResultat;
         private System.Windows.Forms.Label lblCheminSource;
         private System.Windows.Forms.Panel panelDragAndDrop;
+        private System.Windows.Forms.Button btnValidationSource;
     }
 }
 

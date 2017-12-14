@@ -12,33 +12,18 @@ namespace GenerateurDeGroupe
     {
         public static string find()
         {
+            string sPath = "";
             OpenFileDialog ofd = new OpenFileDialog();
-            Stream myStream = null;
-
             ofd.InitialDirectory = "c:\\";
-            ofd.Filter = "txt files (*.txt)|*.txt|csv files (*.csv*)|*.csv*";
+            ofd.Filter = "txt files (*.txt)|*.txt|csv files (*.csv*)|*.csv*|all files (*.*)|*.*";
             ofd.FilterIndex = 1;
             ofd.RestoreDirectory = true;
-
-            if (ofd.ShowDialog() == DialogResult.OK)
+            ofd.ShowDialog();
+            if (ofd.FileName == "")
             {
-                try
-                {
-                    if ((myStream = ofd.OpenFile()) != null)
-                    {
-                        using (myStream)
-                        {
-                            // Insert code to read the stream here.
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-                }
+                sPath = "Aucun fichier sélectionné";
             }
-            myStream.Close();
-            return (ofd.FileName);
+            return (sPath);
         }
 
 
@@ -65,6 +50,12 @@ namespace GenerateurDeGroupe
             monStreamWriter.Write(sConfigPath);
             monStreamWriter.Close();
             maFileStream.Close();
+        }
+
+        public static string findDirectory()
+        {//ToDo
+            string sTemp = "";
+            return sTemp;
         }
     }
 }

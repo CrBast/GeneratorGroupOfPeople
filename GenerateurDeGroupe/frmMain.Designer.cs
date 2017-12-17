@@ -30,7 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ouvrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnouvrir = new System.Windows.Forms.ToolStripMenuItem();
             this.redémmarerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arrêterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.outilsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,6 +39,7 @@
             this.btnExportCsv = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.grpboxConfiguration = new System.Windows.Forms.GroupBox();
+            this.btnValidationSource = new System.Windows.Forms.Button();
             this.lblCroissantStatic = new System.Windows.Forms.Label();
             this.chkboxCroissant = new System.Windows.Forms.CheckBox();
             this.lblAleatoirementStatic = new System.Windows.Forms.Label();
@@ -55,7 +56,8 @@
             this.dtagrdResultat = new System.Windows.Forms.DataGridView();
             this.lblCheminSource = new System.Windows.Forms.Label();
             this.panelDragAndDrop = new System.Windows.Forms.Panel();
-            this.btnValidationSource = new System.Windows.Forms.Button();
+            this.btnText = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCSV = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.grpboxConfiguration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdSource)).BeginInit();
@@ -79,30 +81,33 @@
             // fichierToolStripMenuItem
             // 
             this.fichierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ouvrirToolStripMenuItem,
+            this.btnouvrir,
             this.redémmarerToolStripMenuItem,
             this.arrêterToolStripMenuItem});
             this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
             this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.fichierToolStripMenuItem.Text = "Fichier";
             // 
-            // ouvrirToolStripMenuItem
+            // btnouvrir
             // 
-            this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
-            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.ouvrirToolStripMenuItem.Text = "Ouvrir";
-            this.ouvrirToolStripMenuItem.Click += new System.EventHandler(this.ouvrirToolStripMenuItem_Click);
+            this.btnouvrir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnCSV,
+            this.btnText});
+            this.btnouvrir.Name = "btnouvrir";
+            this.btnouvrir.Size = new System.Drawing.Size(152, 22);
+            this.btnouvrir.Text = "Ouvrir";
+            this.btnouvrir.Click += new System.EventHandler(this.ouvrirToolStripMenuItem_Click);
             // 
             // redémmarerToolStripMenuItem
             // 
             this.redémmarerToolStripMenuItem.Name = "redémmarerToolStripMenuItem";
-            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.redémmarerToolStripMenuItem.Text = "Redémmarrer";
             // 
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.arrêterToolStripMenuItem.Text = "Quitter";
             // 
             // outilsToolStripMenuItem
@@ -165,6 +170,17 @@
             this.grpboxConfiguration.TabIndex = 8;
             this.grpboxConfiguration.TabStop = false;
             this.grpboxConfiguration.Text = "Configuration";
+            // 
+            // btnValidationSource
+            // 
+            this.btnValidationSource.Location = new System.Drawing.Point(35, 174);
+            this.btnValidationSource.Name = "btnValidationSource";
+            this.btnValidationSource.Size = new System.Drawing.Size(223, 26);
+            this.btnValidationSource.TabIndex = 20;
+            this.btnValidationSource.Text = "Valider la source";
+            this.btnValidationSource.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnValidationSource.UseVisualStyleBackColor = true;
+            this.btnValidationSource.Visible = false;
             // 
             // lblCroissantStatic
             // 
@@ -330,16 +346,20 @@
             this.panelDragAndDrop.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDragAndDrop_DragDrop);
             this.panelDragAndDrop.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDragAndDrop_DragEnter);
             // 
-            // btnValidationSource
+            // btnText
             // 
-            this.btnValidationSource.Location = new System.Drawing.Point(35, 174);
-            this.btnValidationSource.Name = "btnValidationSource";
-            this.btnValidationSource.Size = new System.Drawing.Size(223, 26);
-            this.btnValidationSource.TabIndex = 20;
-            this.btnValidationSource.Text = "Valider la source";
-            this.btnValidationSource.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnValidationSource.UseVisualStyleBackColor = true;
-            this.btnValidationSource.Visible = false;
+            this.btnText.Name = "btnText";
+            this.btnText.Size = new System.Drawing.Size(152, 22);
+            this.btnText.Text = "Text";
+            this.btnText.Visible = false;
+            // 
+            // btnCSV
+            // 
+            this.btnCSV.Name = "btnCSV";
+            this.btnCSV.Size = new System.Drawing.Size(152, 22);
+            this.btnCSV.Text = "CSV";
+            this.btnCSV.Visible = false;
+            this.btnCSV.Click += new System.EventHandler(this.btnCSV_Click);
             // 
             // FrmMain
             // 
@@ -377,7 +397,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ouvrirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnouvrir;
         private System.Windows.Forms.ToolStripMenuItem redémmarerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem arrêterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem outilsToolStripMenuItem;
@@ -403,6 +423,8 @@
         private System.Windows.Forms.Label lblCheminSource;
         private System.Windows.Forms.Panel panelDragAndDrop;
         private System.Windows.Forms.Button btnValidationSource;
+        private System.Windows.Forms.ToolStripMenuItem btnText;
+        private System.Windows.Forms.ToolStripMenuItem btnCSV;
     }
 }
 

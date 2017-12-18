@@ -8,14 +8,23 @@ using System.Windows.Forms;
 
 namespace GenerateurDeGroupe
 {
-    class fileAction
+    class FileAction
     {
-        public static string find()
+        public static string FindFile(int iType /*0 = csv / 1 = txt*/)
         {
             string sPath = "";
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.InitialDirectory = "c:\\";
-            ofd.Filter = "txt files (*.txt)|*.txt|csv files (*.csv*)|*.csv*|all files (*.*)|*.*";
+            switch (iType)
+            {
+                case 0:
+                    ofd.Filter = "csv files (*.csv*)|*.csv*";
+                    break;
+                case 1:
+                    ofd.Filter = "txt files (*.txt)|*.txt";
+                    break;
+            }                      
+            //ofd.Filter = "txt files (*.txt)|*.txt|csv files (*.csv*)|*.csv*|all files (*.*)|*.*";
             ofd.FilterIndex = 1;
             ofd.RestoreDirectory = true;
             ofd.ShowDialog();
@@ -23,11 +32,15 @@ namespace GenerateurDeGroupe
             {
                 sPath = "Aucun fichier sélectionné";
             }
+            else
+            {
+                sPath = ofd.FileName;
+            }
             return (sPath);
         }
 
 
-        public static void write(string sPath, string sContent)
+        public static void Write(string sPath, string sContent)
         {
             FileStream maFileStream = new FileStream(sPath, FileMode.Create);  // ouverture du canal de communication (flux)
             StreamWriter monStreamWriter = new StreamWriter(maFileStream, ASCIIEncoding.Default);  // mode écriture
@@ -36,14 +49,14 @@ namespace GenerateurDeGroupe
             maFileStream.Close();
         }
 
-        public static string read(string sPath)
+        public static string Read(string sPath)
         {
             // TO DO
             string sContentText = "";
             return(sContentText);
         }
 
-        public static void writeConfig(string sConfigPath)// to do
+        public static void WriteConfig(string sConfigPath)// to do
         {
             FileStream maFileStream = new FileStream(@"./config.conf", FileMode.Create);  // ouverture du canal de communication (flux)
             StreamWriter monStreamWriter = new StreamWriter(maFileStream, ASCIIEncoding.Default);  // mode écriture
@@ -52,7 +65,7 @@ namespace GenerateurDeGroupe
             maFileStream.Close();
         }
 
-        public static string findDirectory()
+        public static string FindDirectory()
         {//ToDo
             string sTemp = "";
             return sTemp;

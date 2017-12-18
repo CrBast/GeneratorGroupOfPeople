@@ -31,6 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnouvrir = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnImportCSV = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnImportText = new System.Windows.Forms.ToolStripMenuItem();
             this.redémmarerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arrêterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.outilsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,8 +58,7 @@
             this.dtagrdResultat = new System.Windows.Forms.DataGridView();
             this.lblCheminSource = new System.Windows.Forms.Label();
             this.panelDragAndDrop = new System.Windows.Forms.Panel();
-            this.btnText = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCSV = new System.Windows.Forms.ToolStripMenuItem();
+            this.Personne = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.grpboxConfiguration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdSource)).BeginInit();
@@ -91,12 +92,25 @@
             // btnouvrir
             // 
             this.btnouvrir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnCSV,
-            this.btnText});
+            this.btnImportCSV,
+            this.btnImportText});
             this.btnouvrir.Name = "btnouvrir";
             this.btnouvrir.Size = new System.Drawing.Size(152, 22);
             this.btnouvrir.Text = "Ouvrir";
-            this.btnouvrir.Click += new System.EventHandler(this.ouvrirToolStripMenuItem_Click);
+            // 
+            // btnImportCSV
+            // 
+            this.btnImportCSV.Name = "btnImportCSV";
+            this.btnImportCSV.Size = new System.Drawing.Size(152, 22);
+            this.btnImportCSV.Text = "CSV";
+            this.btnImportCSV.Click += new System.EventHandler(this.btnImportCSV_Click);
+            // 
+            // btnImportText
+            // 
+            this.btnImportText.Name = "btnImportText";
+            this.btnImportText.Size = new System.Drawing.Size(152, 22);
+            this.btnImportText.Text = "Text";
+            this.btnImportText.Click += new System.EventHandler(this.btnImportText_Click);
             // 
             // redémmarerToolStripMenuItem
             // 
@@ -273,6 +287,8 @@
             // 
             this.dtagrdSource.AllowUserToOrderColumns = true;
             this.dtagrdSource.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtagrdSource.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Personne});
             this.dtagrdSource.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtagrdSource.Location = new System.Drawing.Point(12, 52);
             this.dtagrdSource.Name = "dtagrdSource";
@@ -327,11 +343,11 @@
             // 
             this.lblCheminSource.AutoSize = true;
             this.lblCheminSource.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblCheminSource.Location = new System.Drawing.Point(39, 21);
+            this.lblCheminSource.Location = new System.Drawing.Point(58, 23);
             this.lblCheminSource.Name = "lblCheminSource";
-            this.lblCheminSource.Size = new System.Drawing.Size(202, 13);
+            this.lblCheminSource.Size = new System.Drawing.Size(149, 13);
             this.lblCheminSource.TabIndex = 0;
-            this.lblCheminSource.Text = "C:\\Users\\creb\\Documents\\personnes.txt";
+            this.lblCheminSource.Text = "Veuillez sélectionner un fichier";
             this.lblCheminSource.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelDragAndDrop
@@ -346,20 +362,11 @@
             this.panelDragAndDrop.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDragAndDrop_DragDrop);
             this.panelDragAndDrop.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDragAndDrop_DragEnter);
             // 
-            // btnText
+            // Personne
             // 
-            this.btnText.Name = "btnText";
-            this.btnText.Size = new System.Drawing.Size(152, 22);
-            this.btnText.Text = "Text";
-            this.btnText.Visible = false;
-            // 
-            // btnCSV
-            // 
-            this.btnCSV.Name = "btnCSV";
-            this.btnCSV.Size = new System.Drawing.Size(152, 22);
-            this.btnCSV.Text = "CSV";
-            this.btnCSV.Visible = false;
-            this.btnCSV.Click += new System.EventHandler(this.btnCSV_Click);
+            this.Personne.HeaderText = "Personne";
+            this.Personne.Name = "Personne";
+            this.Personne.Width = 190;
             // 
             // FrmMain
             // 
@@ -423,8 +430,9 @@
         private System.Windows.Forms.Label lblCheminSource;
         private System.Windows.Forms.Panel panelDragAndDrop;
         private System.Windows.Forms.Button btnValidationSource;
-        private System.Windows.Forms.ToolStripMenuItem btnText;
-        private System.Windows.Forms.ToolStripMenuItem btnCSV;
+        private System.Windows.Forms.ToolStripMenuItem btnImportText;
+        private System.Windows.Forms.ToolStripMenuItem btnImportCSV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Personne;
     }
 }
 

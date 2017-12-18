@@ -54,11 +54,12 @@ namespace Maquette_1
             sPath = FileAction.FindFile(0);/*0 = csv / 1 = txt*/
             if (sPath == "Aucun fichier sélectionné")
             {
+                lblCheminSource.Text = "Aucun fichier sélectionné";
                 return;//Si égal à 0 alors ne fait pas la suite
             }
             dtagrdSource.Columns.Remove("Personne");//Supprimme la colonne "Personne" dans dtagrdSource
             dtagrdSource.DataSource = mainDataTable; // affichage dataTable dans datagridview
-            dtagrdSource.Columns[0].Width = 190; //Agrandissement de la taille des cellules datagridview
+            dtagrdSource.Columns[0].Width = 176; //Agrandissement de la taille des cellules datagridview
 
             lblCheminSource.Text = sPath;
 

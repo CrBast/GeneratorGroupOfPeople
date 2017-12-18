@@ -95,33 +95,33 @@
             this.btnImportCSV,
             this.btnImportText});
             this.btnouvrir.Name = "btnouvrir";
-            this.btnouvrir.Size = new System.Drawing.Size(152, 22);
+            this.btnouvrir.Size = new System.Drawing.Size(146, 22);
             this.btnouvrir.Text = "Ouvrir";
             // 
             // btnImportCSV
             // 
             this.btnImportCSV.Name = "btnImportCSV";
-            this.btnImportCSV.Size = new System.Drawing.Size(152, 22);
+            this.btnImportCSV.Size = new System.Drawing.Size(95, 22);
             this.btnImportCSV.Text = "CSV";
             this.btnImportCSV.Click += new System.EventHandler(this.btnImportCSV_Click);
             // 
             // btnImportText
             // 
             this.btnImportText.Name = "btnImportText";
-            this.btnImportText.Size = new System.Drawing.Size(152, 22);
+            this.btnImportText.Size = new System.Drawing.Size(95, 22);
             this.btnImportText.Text = "Text";
             this.btnImportText.Click += new System.EventHandler(this.btnImportText_Click);
             // 
             // redémmarerToolStripMenuItem
             // 
             this.redémmarerToolStripMenuItem.Name = "redémmarerToolStripMenuItem";
-            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.redémmarerToolStripMenuItem.Text = "Redémmarrer";
             // 
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.arrêterToolStripMenuItem.Text = "Quitter";
             // 
             // outilsToolStripMenuItem
@@ -366,7 +366,7 @@
             // 
             this.Personne.HeaderText = "Personne";
             this.Personne.Name = "Personne";
-            this.Personne.Width = 190;
+            this.Personne.Width = 176;
             // 
             // FrmMain
             // 

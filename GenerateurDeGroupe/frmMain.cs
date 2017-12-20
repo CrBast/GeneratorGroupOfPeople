@@ -14,6 +14,8 @@ namespace Maquette_1
 {
     public partial class FrmMain : Form
     {
+         int count = 0;
+       
         public FrmMain()
         {
             InitializeComponent();
@@ -36,13 +38,13 @@ namespace Maquette_1
 
         private void dtagrdSource_Click(object sender, EventArgs e)
         {
-            lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}"; ;//Compte et affiche le nombre de personnes dans la datagrid
+           // lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}"; ;//Compte et affiche le nombre de personnes dans la datagrid
             btnValidationSource.Visible = true;
         }
 
         private void dtagrdSource_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}"; ;//Compte et affiche le nombre de personnes dans la datagrid
+           // lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}"; ;//Compte et affiche le nombre de personnes dans la datagrid
             btnValidationSource.Visible = true;
         }
 
@@ -72,7 +74,30 @@ namespace Maquette_1
             streamCsv.Close();//Fermeture de la stream
 
             dtagrdSource.DataSource = mainDataTable; // affichage dataTable dans datagridview
-            lblNombrePersonnes.Text = $@"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}";//Compte et affiche le nombre de personnes dans la datagrid
+           // lblNombrePersonnes.Text = $@"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}";//Compte et affiche le nombre de personnes dans la datagrid
+        }
+
+        private void btnImportText_Click(object sender, EventArgs e)
+        {
+            string sPath = "";
+            DataGridView dataGridView1 = new DataGridView();
+            dataGridView1.Dock = DockStyle.Fill;
+            sPath = FileAction.FindFile(1);
+            dtagrdSource.Columns.Remove("Personne");//Supprimme la colonne "Personne" dans dtagrdSource
+
+            string[] textData = System.IO.File.ReadAllLines(sPath);//lire le text
+            string[] headers = textData[0].Split(',');
+
+            DataTable dataTable1 = new DataTable();//creation du datatable
+            foreach (string header in headers)
+                dataTable1.Columns.Add(header, typeof(string), null);
+            for (int i = 1; i < textData.Length; i++)
+            {
+                dataTable1.Rows.Add(textData[i].Split(','));
+                count++;
+            }
+            dtagrdSource.DataSource = dataTable1;// affichage dataTable dans datagridview
+            lblNombrePersonnes.Text = Convert.ToString(count);
         }
     }
 }

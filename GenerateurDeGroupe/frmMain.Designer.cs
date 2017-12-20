@@ -110,6 +110,7 @@
             this.btnImportText.Name = "btnImportText";
             this.btnImportText.Size = new System.Drawing.Size(152, 22);
             this.btnImportText.Text = "Text";
+            this.btnImportText.Click += new System.EventHandler(this.btnImportText_Click);
             // 
             // redémmarerToolStripMenuItem
             // 

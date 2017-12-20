@@ -57,33 +57,22 @@ namespace Maquette_1
                 lblCheminSource.Text = "Aucun fichier sélectionné";
                 return;//Si égal à 0 alors ne fait pas la suite
             }
+            lblCheminSource.Text = sPath;//Affichage du chemin dans le label
+
             dtagrdSource.Columns.Remove("Personne");//Supprimme la colonne "Personne" dans dtagrdSource
             dtagrdSource.DataSource = mainDataTable; // affichage dataTable dans datagridview
-            dtagrdSource.Columns[0].Width = 176; //Agrandissement de la taille des cellules datagridview
+            dtagrdSource.Columns[0].Width = 176; //Agrandissement de la taille des cellules datagridview 
 
-            lblCheminSource.Text = sPath;
-
-            StreamReader read = new StreamReader(sPath); //Création d'un StreamReader
-            string[] totalData = new string[File.ReadAllLines(sPath).Length];
-            totalData = read.ReadLine().Split(';');
-            var totalline = totalData[0].Split(';').Length; // compte le nombre de rows
-            while (!read.EndOfStream)
+            string sline;
+            System.IO.StreamReader streamCsv = new System.IO.StreamReader(sPath);
+            while ((sline = streamCsv.ReadLine()) != null)//Test si le contenu est vide
             {
-                totalData = read.ReadLine().Split(';'); //le boucle de lire de fichier CSV
-                for (int i = 0; i < totalline; i++)
-                {
-                    mainDataTable.Rows.Add(totalData[i]);
-
-                }
-
+                mainDataTable.Rows.Add(sline);//Ajoute les valeurs ligne par ligne
             }
-            dtagrdSource.DataSource = mainDataTable; // affichage dataTable dans datagridview
-            lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}";//Compte et affiche le nombre de personnes dans la datagrid
-        }
+            streamCsv.Close();//Fermeture de la stream
 
-        private void btnImportText_Click(object sender, EventArgs e)
-        {
-            List<string> list = new List<string>();
+            dtagrdSource.DataSource = mainDataTable; // affichage dataTable dans datagridview
+            lblNombrePersonnes.Text = $@"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}";//Compte et affiche le nombre de personnes dans la datagrid
         }
     }
 }

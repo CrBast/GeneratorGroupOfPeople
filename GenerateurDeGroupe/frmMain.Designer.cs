@@ -52,13 +52,13 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dtagrdSource = new System.Windows.Forms.DataGridView();
+            this.Personne = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFichierSourceStatic = new System.Windows.Forms.Label();
             this.lblNombrePersonnes = new System.Windows.Forms.Label();
             this.lblResultatStatic = new System.Windows.Forms.Label();
             this.dtagrdResultat = new System.Windows.Forms.DataGridView();
             this.lblCheminSource = new System.Windows.Forms.Label();
             this.panelDragAndDrop = new System.Windows.Forms.Panel();
-            this.Personne = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.grpboxConfiguration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdSource)).BeginInit();
@@ -95,33 +95,32 @@
             this.btnImportCSV,
             this.btnImportText});
             this.btnouvrir.Name = "btnouvrir";
-            this.btnouvrir.Size = new System.Drawing.Size(146, 22);
+            this.btnouvrir.Size = new System.Drawing.Size(152, 22);
             this.btnouvrir.Text = "Ouvrir";
             // 
             // btnImportCSV
             // 
             this.btnImportCSV.Name = "btnImportCSV";
-            this.btnImportCSV.Size = new System.Drawing.Size(95, 22);
+            this.btnImportCSV.Size = new System.Drawing.Size(152, 22);
             this.btnImportCSV.Text = "CSV";
             this.btnImportCSV.Click += new System.EventHandler(this.btnImportCSV_Click);
             // 
             // btnImportText
             // 
             this.btnImportText.Name = "btnImportText";
-            this.btnImportText.Size = new System.Drawing.Size(95, 22);
+            this.btnImportText.Size = new System.Drawing.Size(152, 22);
             this.btnImportText.Text = "Text";
-            this.btnImportText.Click += new System.EventHandler(this.btnImportText_Click);
             // 
             // redémmarerToolStripMenuItem
             // 
             this.redémmarerToolStripMenuItem.Name = "redémmarerToolStripMenuItem";
-            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.redémmarerToolStripMenuItem.Text = "Redémmarrer";
             // 
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.arrêterToolStripMenuItem.Text = "Quitter";
             // 
             // outilsToolStripMenuItem
@@ -298,6 +297,12 @@
             this.dtagrdSource.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtagrdSource_RowEnter);
             this.dtagrdSource.Click += new System.EventHandler(this.dtagrdSource_Click);
             // 
+            // Personne
+            // 
+            this.Personne.HeaderText = "Personne";
+            this.Personne.Name = "Personne";
+            this.Personne.Width = 176;
+            // 
             // lblFichierSourceStatic
             // 
             this.lblFichierSourceStatic.AutoSize = true;
@@ -361,12 +366,6 @@
             this.panelDragAndDrop.TabIndex = 20;
             this.panelDragAndDrop.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDragAndDrop_DragDrop);
             this.panelDragAndDrop.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDragAndDrop_DragEnter);
-            // 
-            // Personne
-            // 
-            this.Personne.HeaderText = "Personne";
-            this.Personne.Name = "Personne";
-            this.Personne.Width = 176;
             // 
             // FrmMain
             // 

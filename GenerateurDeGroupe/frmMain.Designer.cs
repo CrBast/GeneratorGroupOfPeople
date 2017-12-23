@@ -31,8 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnouvrir = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnImportCSV = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnImportText = new System.Windows.Forms.ToolStripMenuItem();
             this.redémmarerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arrêterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.outilsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,10 +47,9 @@
             this.lblCreationDesGroupesStatic = new System.Windows.Forms.Label();
             this.rdobtnNombreDeGroupes = new System.Windows.Forms.RadioButton();
             this.rdobtnPersonnesParGroupe = new System.Windows.Forms.RadioButton();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxNombreGroupes = new System.Windows.Forms.TextBox();
+            this.tbxNombrePersonneParGroupe = new System.Windows.Forms.TextBox();
             this.dtagrdSource = new System.Windows.Forms.DataGridView();
-            this.Personne = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFichierSourceStatic = new System.Windows.Forms.Label();
             this.lblNombrePersonnes = new System.Windows.Forms.Label();
             this.lblResultatStatic = new System.Windows.Forms.Label();
@@ -91,37 +88,21 @@
             // 
             // btnouvrir
             // 
-            this.btnouvrir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnImportCSV,
-            this.btnImportText});
             this.btnouvrir.Name = "btnouvrir";
-            this.btnouvrir.Size = new System.Drawing.Size(152, 22);
+            this.btnouvrir.Size = new System.Drawing.Size(146, 22);
             this.btnouvrir.Text = "Ouvrir";
-            // 
-            // btnImportCSV
-            // 
-            this.btnImportCSV.Name = "btnImportCSV";
-            this.btnImportCSV.Size = new System.Drawing.Size(152, 22);
-            this.btnImportCSV.Text = "CSV";
-            this.btnImportCSV.Click += new System.EventHandler(this.btnImportCSV_Click);
-            // 
-            // btnImportText
-            // 
-            this.btnImportText.Name = "btnImportText";
-            this.btnImportText.Size = new System.Drawing.Size(152, 22);
-            this.btnImportText.Text = "Text";
-            this.btnImportText.Click += new System.EventHandler(this.btnImportText_Click);
+            this.btnouvrir.Click += new System.EventHandler(this.btnouvrir_Click);
             // 
             // redémmarerToolStripMenuItem
             // 
             this.redémmarerToolStripMenuItem.Name = "redémmarerToolStripMenuItem";
-            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.redémmarerToolStripMenuItem.Text = "Redémmarrer";
             // 
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.arrêterToolStripMenuItem.Text = "Quitter";
             // 
             // outilsToolStripMenuItem
@@ -137,6 +118,7 @@
             this.effacerContenuToolStripMenuItem.Name = "effacerContenuToolStripMenuItem";
             this.effacerContenuToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.effacerContenuToolStripMenuItem.Text = "Effacer contenu";
+            this.effacerContenuToolStripMenuItem.Click += new System.EventHandler(this.effacerContenuToolStripMenuItem_Click);
             // 
             // btnExportTxt
             // 
@@ -175,8 +157,8 @@
             this.grpboxConfiguration.Controls.Add(this.lblCreationDesGroupesStatic);
             this.grpboxConfiguration.Controls.Add(this.rdobtnNombreDeGroupes);
             this.grpboxConfiguration.Controls.Add(this.rdobtnPersonnesParGroupe);
-            this.grpboxConfiguration.Controls.Add(this.textBox3);
-            this.grpboxConfiguration.Controls.Add(this.textBox1);
+            this.grpboxConfiguration.Controls.Add(this.tbxNombreGroupes);
+            this.grpboxConfiguration.Controls.Add(this.tbxNombrePersonneParGroupe);
             this.grpboxConfiguration.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.grpboxConfiguration.Location = new System.Drawing.Point(258, 135);
             this.grpboxConfiguration.Name = "grpboxConfiguration";
@@ -195,6 +177,7 @@
             this.btnValidationSource.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnValidationSource.UseVisualStyleBackColor = true;
             this.btnValidationSource.Visible = false;
+            this.btnValidationSource.Click += new System.EventHandler(this.btnValidationSource_Click);
             // 
             // lblCroissantStatic
             // 
@@ -263,32 +246,30 @@
             this.rdobtnPersonnesParGroupe.Text = "Nombre de personnes par groupes";
             this.rdobtnPersonnesParGroupe.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // tbxNombreGroupes
             // 
-            this.textBox3.Location = new System.Drawing.Point(239, 79);
-            this.textBox3.MaxLength = 3;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(46, 21);
-            this.textBox3.TabIndex = 11;
-            this.textBox3.Text = "3";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbxNombreGroupes.Location = new System.Drawing.Point(239, 79);
+            this.tbxNombreGroupes.MaxLength = 3;
+            this.tbxNombreGroupes.Name = "tbxNombreGroupes";
+            this.tbxNombreGroupes.Size = new System.Drawing.Size(46, 21);
+            this.tbxNombreGroupes.TabIndex = 11;
+            this.tbxNombreGroupes.Text = "3";
+            this.tbxNombreGroupes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox1
+            // tbxNombrePersonneParGroupe
             // 
-            this.textBox1.Location = new System.Drawing.Point(239, 42);
-            this.textBox1.MaxLength = 3;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(46, 21);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "3";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbxNombrePersonneParGroupe.Location = new System.Drawing.Point(239, 42);
+            this.tbxNombrePersonneParGroupe.MaxLength = 3;
+            this.tbxNombrePersonneParGroupe.Name = "tbxNombrePersonneParGroupe";
+            this.tbxNombrePersonneParGroupe.Size = new System.Drawing.Size(46, 21);
+            this.tbxNombrePersonneParGroupe.TabIndex = 1;
+            this.tbxNombrePersonneParGroupe.Text = "3";
+            this.tbxNombrePersonneParGroupe.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dtagrdSource
             // 
             this.dtagrdSource.AllowUserToOrderColumns = true;
             this.dtagrdSource.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtagrdSource.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Personne});
             this.dtagrdSource.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtagrdSource.Location = new System.Drawing.Point(12, 52);
             this.dtagrdSource.Name = "dtagrdSource";
@@ -297,12 +278,6 @@
             this.dtagrdSource.TabIndex = 9;
             this.dtagrdSource.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtagrdSource_RowEnter);
             this.dtagrdSource.Click += new System.EventHandler(this.dtagrdSource_Click);
-            // 
-            // Personne
-            // 
-            this.Personne.HeaderText = "Personne";
-            this.Personne.Name = "Personne";
-            this.Personne.Width = 176;
             // 
             // lblFichierSourceStatic
             // 
@@ -413,10 +388,10 @@
         private System.Windows.Forms.Button btnExportCsv;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox grpboxConfiguration;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxNombrePersonneParGroupe;
         private System.Windows.Forms.RadioButton rdobtnNombreDeGroupes;
         private System.Windows.Forms.RadioButton rdobtnPersonnesParGroupe;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbxNombreGroupes;
         private System.Windows.Forms.Label lblCroissantStatic;
         private System.Windows.Forms.CheckBox chkboxCroissant;
         private System.Windows.Forms.Label lblAleatoirementStatic;
@@ -430,9 +405,6 @@
         private System.Windows.Forms.Label lblCheminSource;
         private System.Windows.Forms.Panel panelDragAndDrop;
         private System.Windows.Forms.Button btnValidationSource;
-        private System.Windows.Forms.ToolStripMenuItem btnImportText;
-        private System.Windows.Forms.ToolStripMenuItem btnImportCSV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Personne;
     }
 }
 

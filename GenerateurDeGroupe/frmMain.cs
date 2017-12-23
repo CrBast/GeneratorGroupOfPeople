@@ -14,11 +14,14 @@ namespace Maquette_1
 {
     public partial class FrmMain : Form
     {
-         int count = 0;
-       
+        int iNbrPersonne = 0;
         public FrmMain()
         {
             InitializeComponent();
+            DataTable mainDataTable = new DataTable(); //Déclaration d'une DataTable
+            mainDataTable.Columns.Add("Personne"); // déclaré un colume on peut ajout plusieur colums
+            dtagrdSource.DataSource = mainDataTable;
+            dtagrdSource.Columns[0].Width = 176; //Agrandissement de la taille des cellules datagridview
         }
 
         private void panelDragAndDrop_DragDrop(object sender, DragEventArgs e)
@@ -38,66 +41,82 @@ namespace Maquette_1
 
         private void dtagrdSource_Click(object sender, EventArgs e)
         {
-           // lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}"; ;//Compte et affiche le nombre de personnes dans la datagrid
+            iNbrPersonne = dtagrdSource.RowCount - 1;//Affecte le nombre de personnes
+            lblNombrePersonnes.Text = $"Nombre de personnes : {iNbrPersonne}";
             btnValidationSource.Visible = true;
+            dtagrdSource.Update();//Mise à jour de la datatable source
         }
 
         private void dtagrdSource_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-           // lblNombrePersonnes.Text = $"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}"; ;//Compte et affiche le nombre de personnes dans la datagrid
+            iNbrPersonne = dtagrdSource.RowCount - 1;//Affecte le nombre de personnes
+            lblNombrePersonnes.Text = $"Nombre de personnes : {iNbrPersonne}";
             btnValidationSource.Visible = true;
+            dtagrdSource.Update();//Mise à jour de la datatable source
+
+
         }
 
-        private void btnImportCSV_Click(object sender, EventArgs e)
+        private void btnouvrir_Click(object sender, EventArgs e)
         {
+            DataTable dataTable = new DataTable();
+            dataTable = ((DataTable)dtagrdSource.DataSource).Copy();
+            dataTable.Clear();
             string sPath = "";
-            DataTable mainDataTable = new DataTable(); //Déclaration d'une DataTable
-            mainDataTable.Columns.Add("Personne"); // déclaré un colume on peut ajout plusieur colums
-            sPath = FileAction.FindFile(0);/*0 = csv / 1 = txt*/
+            sPath = FileAction.FindFile();
             if (sPath == "Aucun fichier sélectionné")
             {
                 lblCheminSource.Text = "Aucun fichier sélectionné";
                 return;//Si égal à 0 alors ne fait pas la suite
             }
             lblCheminSource.Text = sPath;//Affichage du chemin dans le label
-
-            dtagrdSource.Columns.Remove("Personne");//Supprimme la colonne "Personne" dans dtagrdSource
-            dtagrdSource.DataSource = mainDataTable; // affichage dataTable dans datagridview
-            dtagrdSource.Columns[0].Width = 176; //Agrandissement de la taille des cellules datagridview 
-
+            
             string sline;
+            this.Refresh();
             System.IO.StreamReader streamCsv = new System.IO.StreamReader(sPath);
             while ((sline = streamCsv.ReadLine()) != null)//Test si le contenu est vide
             {
-                mainDataTable.Rows.Add(sline);//Ajoute les valeurs ligne par ligne
+                dataTable.Rows.Add(sline);//Ajoute les valeurs ligne par ligne
             }
             streamCsv.Close();//Fermeture de la stream
 
-            dtagrdSource.DataSource = mainDataTable; // affichage dataTable dans datagridview
-           // lblNombrePersonnes.Text = $@"Nombre de personnes : {Convert.ToString(dtagrdSource.RowCount - 1)}";//Compte et affiche le nombre de personnes dans la datagrid
+            dtagrdSource.DataSource = dataTable;
+            iNbrPersonne = dtagrdSource.RowCount - 1;//Affecte le nombre de personnes
+            lblNombrePersonnes.Text = $"Nombre de personnes : {iNbrPersonne}";
+            btnValidationSource.Visible = true;
         }
 
-        private void btnImportText_Click(object sender, EventArgs e)
+        private void btnValidationSource_Click(object sender, EventArgs e)
         {
-            string sPath = "";
-            DataGridView dataGridView1 = new DataGridView();
-            dataGridView1.Dock = DockStyle.Fill;
-            sPath = FileAction.FindFile(1);
-            dtagrdSource.Columns.Remove("Personne");//Supprimme la colonne "Personne" dans dtagrdSource
+            dtagrdSource.Update();
+            DataTable dataTable = new DataTable();
+            dataTable = ((DataTable)dtagrdSource.DataSource).Copy();
 
-            string[] textData = System.IO.File.ReadAllLines(sPath);//lire le text
-            string[] headers = textData[0].Split(',');
+            CreationGroupe(dataTable, Convert.ToInt32(tbxNombreGroupes.Text), iNbrPersonne, 0);
+        }
 
-            DataTable dataTable1 = new DataTable();//creation du datatable
-            foreach (string header in headers)
-                dataTable1.Columns.Add(header, typeof(string), null);
-            for (int i = 1; i < textData.Length; i++)
+        public void CreationGroupe(DataTable dataTableSource, int iNbrGroupe, int NbrPersonne, int NbrPersonneParGroupe)
+        {
+            DataTable dataTableRelultat = new DataTable();
+            dataTableRelultat.Columns.Add("Groupe");
+            dataTableRelultat.Columns.Add("Personne");
+            Random rndm = new Random();            
+            for (int i = 0; i <= NbrPersonne -1; i++)
             {
-                dataTable1.Rows.Add(textData[i].Split(','));
-                count++;
+                DataRow row = dataTableRelultat.NewRow();
+                int iNbr = rndm.Next(1, iNbrGroupe + 1);
+                row["Groupe"] = "Groupe " + iNbr;
+                row["Personne"] = dataTableSource.Rows[i].Field<string>(0);
+                dataTableRelultat.Rows.Add(row);
             }
-            dtagrdSource.DataSource = dataTable1;// affichage dataTable dans datagridview
-            lblNombrePersonnes.Text = Convert.ToString(count);
+            
+            dtagrdResultat.DataSource = dataTableRelultat;
+            dtagrdResultat.Sort(this.dtagrdResultat.Columns["Groupe"], ListSortDirection.Ascending);
+        }
+
+        private void effacerContenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

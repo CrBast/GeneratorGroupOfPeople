@@ -10,21 +10,12 @@ namespace GenerateurDeGroupe
 {
     class FileAction
     {
-        public static string FindFile(int iType /*0 = csv / 1 = txt*/)
+        public static string FindFile()
         {
             string sPath = "";
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.InitialDirectory = "c:\\";
-            switch (iType)
-            {
-                case 0:
-                    ofd.Filter = "csv files (*.csv*)|*.csv*";
-                    break;
-                case 1:
-                    ofd.Filter = "txt files (*.txt)|*.txt";
-                    break;
-            }                      
-            //ofd.Filter = "txt files (*.txt)|*.txt|csv files (*.csv*)|*.csv*|all files (*.*)|*.*";
+            ofd.InitialDirectory = "c:\\";                     
+            ofd.Filter = "txt files (*.txt)|*.txt|csv files (*.csv*)|*.csv*|all files (*.*)|*.*";
             ofd.FilterIndex = 1;
             ofd.RestoreDirectory = true;
             ofd.ShowDialog();

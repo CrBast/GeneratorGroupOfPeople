@@ -196,6 +196,7 @@
             this.chkboxCroissant.Size = new System.Drawing.Size(15, 14);
             this.chkboxCroissant.TabIndex = 18;
             this.chkboxCroissant.UseVisualStyleBackColor = true;
+            this.chkboxCroissant.Click += new System.EventHandler(this.chkboxCroissant_Click);
             // 
             // lblAleatoirementStatic
             // 
@@ -209,11 +210,14 @@
             // chkboxAleatoire
             // 
             this.chkboxAleatoire.AutoSize = true;
+            this.chkboxAleatoire.Checked = true;
+            this.chkboxAleatoire.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkboxAleatoire.Location = new System.Drawing.Point(239, 132);
             this.chkboxAleatoire.Name = "chkboxAleatoire";
             this.chkboxAleatoire.Size = new System.Drawing.Size(15, 14);
             this.chkboxAleatoire.TabIndex = 16;
             this.chkboxAleatoire.UseVisualStyleBackColor = true;
+            this.chkboxAleatoire.Click += new System.EventHandler(this.chkboxAleatoire_Click);
             // 
             // lblCreationDesGroupesStatic
             // 
@@ -227,6 +231,7 @@
             // rdobtnNombreDeGroupes
             // 
             this.rdobtnNombreDeGroupes.AutoSize = true;
+            this.rdobtnNombreDeGroupes.Checked = true;
             this.rdobtnNombreDeGroupes.Location = new System.Drawing.Point(6, 81);
             this.rdobtnNombreDeGroupes.Name = "rdobtnNombreDeGroupes";
             this.rdobtnNombreDeGroupes.Size = new System.Drawing.Size(135, 19);

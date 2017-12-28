@@ -89,6 +89,8 @@ namespace Maquette_1
         private void btnValidationSource_Click(object sender, EventArgs e)
         {
             int iMode = 0;
+            int iNbrPersonneParGroupe = 1;
+            int iNbrGroupe = 1;
             dtagrdSource.Update();
             DataTable dataTable = new DataTable();
             dataTable = ((DataTable)dtagrdSource.DataSource).Copy();
@@ -96,59 +98,92 @@ namespace Maquette_1
             if (rdobtnNombreDeGroupes.Checked == true && chkboxCroissant.Checked == true) { iMode = 2; }
             if (rdobtnPersonnesParGroupe.Checked == true && chkboxAleatoire.Checked == true) { iMode = 3; }
             if (rdobtnPersonnesParGroupe.Checked == true && chkboxCroissant.Checked == true) { iMode = 4; }
+            if (Convert.ToInt32(tbxNombrePersonneParGroupe.Text) < 1) { iNbrPersonneParGroupe = 1; } else { iNbrPersonneParGroupe = Convert.ToInt32(tbxNombrePersonneParGroupe.Text); }
+            if (Convert.ToInt32(tbxNombreGroupes.Text) < 1) { iNbrGroupe = 1; } else { iNbrGroupe = Convert.ToInt32(tbxNombreGroupes.Text); }
 
 
-            CreationGroupe(dataTable, Convert.ToInt32(tbxNombreGroupes.Text), iNbrPersonne, 0, iMode);
+            CreationGroupe(dataTable, iNbrGroupe, iNbrPersonne, iNbrPersonneParGroupe, iMode);
         }
 
-        public void CreationGroupe(DataTable dataTableSource, int iNbrGroupe, int NbrPersonne, int NbrPersonneParGroupe, int iMode)
+        public void CreationGroupe(DataTable dataTableSource, int iNbrGroupe, int NbrPersonne, int iNbrPersonneParGroupe, int iMode)
         {
             //Mode 1 : Se base sur le nombre de groupe                          :   aléatoire
             //Mode 2 : Se base sur le nombre de groupe                          :   distribution de carte
             //Mode 3 : Se base sur le nombre de personne par groupe             :   aléatoire
             //Mode 4 : Se base sur le nombre de personne par groupe             :   distribution de carte
 
-            int i = 1;
-            DataTable dataTableRelultat = new DataTable();
-            dataTableRelultat.Columns.Add("IndexHidden");//Cette colonne sert d'index contenant seulement le numéro du groupe
-            dataTableRelultat.Columns.Add("Groupe");
-            dataTableRelultat.Columns.Add("Personne");
+            int iNumGroupe = 1;
+            DataTable dataTableResultat = new DataTable();
+            dataTableResultat.Columns.Add("IndexHidden", typeof(int));//Cette colonne sert d'index contenant seulement le numéro du groupe
+            dataTableResultat.Columns.Add("Groupe");
+            dataTableResultat.Columns.Add("Personne");
             Random rndm = new Random();
 
-            if (iMode == 1)
-            //Méthode pour création groupe avec le nombre de groupe
+
+            switch (iMode)
             {
-                for (int i2 = 0; i2 < iNbrPersonne; i2++)
-                {
-                    int iNbrAlea = rndm.Next(0, dataTableSource.Rows.Count);
-                    if (i > iNbrGroupe)
+                case 1:
+                    //Méthode pour création groupe avec le nombre de groupe
+                    for (int i = 0; i < iNbrPersonne; i++)
                     {
-                        i = 1;
+                        int iNbrAlea = rndm.Next(0, dataTableSource.Rows.Count);
+                        if (iNumGroupe > iNbrGroupe)
+                        {
+                            iNumGroupe = 1;
+                        }
+                        DataRow row = dataTableResultat.NewRow();
+                        row["IndexHidden"] = Convert.ToSingle(iNumGroupe);
+                        row["Groupe"] = "Groupe " + iNumGroupe;
+                        row["Personne"] = dataTableSource.Rows[iNbrAlea].Field<string>(0);
+                        dataTableResultat.Rows.Add(row);
+                        dataTableSource.Rows[iNbrAlea].Delete();
+                        iNumGroupe++;
                     }
-                    DataRow row = dataTableRelultat.NewRow();
-                    row["IndexHidden"] = Convert.ToSingle(i);
-                    row["Groupe"] = "Groupe " + i;
-                    row["Personne"] = dataTableSource.Rows[iNbrAlea].Field<string>(0);
-                    dataTableRelultat.Rows.Add(row);
-                    dataTableSource.Rows[iNbrAlea].Delete();
-                    i++;
-                }
+                    break;
+                case 2:
+                    for (int i = 0; i < iNbrPersonne; i++)
+                    {
+                        if (iNumGroupe > iNbrGroupe)
+                        {
+                            iNumGroupe = 1;
+                        }
+                        DataRow row = dataTableResultat.NewRow();
+                        row["IndexHidden"] = Convert.ToSingle(iNumGroupe);
+                        row["Groupe"] = "Groupe " + iNumGroupe;
+                        row["Personne"] = dataTableSource.Rows[i].Field<string>(0);
+                        dataTableResultat.Rows.Add(row);
+                        iNumGroupe++;
+                    }
+                    break;
+                case 3:
+                    foreach (var SertARien in dtagrdSource.Rows)
+                    {
+                        for (int i = 0; i < iNbrPersonneParGroupe; i++)
+                        {
+                            try
+                            {
+                                int iNbrAlea = rndm.Next(0, dataTableSource.Rows.Count);
+                                DataRow row = dataTableResultat.NewRow();
+                                row["IndexHidden"] = Convert.ToSingle(iNumGroupe);
+                                row["Groupe"] = "Groupe " + iNumGroupe;
+                                row["Personne"] = dataTableSource.Rows[iNbrAlea].Field<string>(0);
+                                dataTableResultat.Rows.Add(row);
+                                dataTableSource.Rows[iNbrAlea].Delete();
+                            }
+                            catch { }
+                        }
+                        iNumGroupe++;
+                    }
+                    break;
+                case 4:
+                    //...;
+                    // ??? Aucune idée ;)
+                    break;
             }
-            if (iMode == 2)
-            {
 
-            }
-            if (iMode == 3)
-            {
-
-            }
-            if (iMode == 4)
-            {
-
-            }
-
-            dtagrdResultat.DataSource = dataTableRelultat;
+            dtagrdResultat.DataSource = dataTableResultat;
             dtagrdResultat.Columns[0].Visible = false; //Cette colonne sert d'index contenant seulement le numéro du groupe
+            this.dtagrdResultat.Sort(this.dtagrdResultat.Columns["IndexHidden"], ListSortDirection.Ascending);
         }
 
         private void effacerContenuToolStripMenuItem_Click(object sender, EventArgs e)

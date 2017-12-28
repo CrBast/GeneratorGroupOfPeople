@@ -406,10 +406,10 @@
         private System.Windows.Forms.Label lblFichierSourceStatic;
         private System.Windows.Forms.Label lblNombrePersonnes;
         private System.Windows.Forms.Label lblResultatStatic;
-        public System.Windows.Forms.DataGridView dtagrdResultat;
         private System.Windows.Forms.Label lblCheminSource;
         private System.Windows.Forms.Panel panelDragAndDrop;
         private System.Windows.Forms.Button btnValidationSource;
+        public System.Windows.Forms.DataGridView dtagrdResultat;
     }
 }
 

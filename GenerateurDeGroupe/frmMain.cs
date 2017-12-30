@@ -36,7 +36,17 @@ namespace Maquette_1
 
         private void btnExportTxt_Click(object sender, EventArgs e)//TEST
         {
-
+            string sPath = FileAction.FindDirectory();//Recherche de répertoire d'enregistrement
+            string sTemp = DGVToString(dtagrdResultat, "\t" );
+            DateTime time = DateTime.Now;
+            FileAction.Write($"{sPath}\\{time.AddYears(1).ToString("dd.MM.yyyy_HH.mm")}_ExportGroupes.txt", sTemp);
+        }
+        private void btnExportCsv_Click(object sender, EventArgs e)
+        {
+            string sPath = FileAction.FindDirectory();//Recherche de répertoire d'enregistrement
+            string sTemp = DGVToString(dtagrdResultat, ";");
+            DateTime time = DateTime.Now;
+            FileAction.Write($"{sPath}\\{time.AddYears(1).ToString("dd.MM.yyyy_HH.mm")}_ExportGroupes.csv", sTemp);
         }
 
         private void dtagrdSource_Click(object sender, EventArgs e)
@@ -103,6 +113,8 @@ namespace Maquette_1
 
 
             CreationGroupe(dataTable, iNbrGroupe, iNbrPersonne, iNbrPersonneParGroupe, iMode);
+            btnExportCsv.Enabled = true;
+            btnExportTxt.Enabled = true;
         }
 
         public void CreationGroupe(DataTable dataTableSource, int iNbrGroupe, int NbrPersonne, int iNbrPersonneParGroupe, int iMode)
@@ -201,6 +213,23 @@ namespace Maquette_1
         {
             chkboxAleatoire.Checked = false;
             chkboxCroissant.Checked = true;
+        }
+        public static string DGVToString(DataGridView dgv, string delimiter)
+        {
+            int iRows = 0;
+            StringBuilder sb = new StringBuilder();
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                for (int i = 1; i < 3; i++)
+                {
+                    sb.Append(dgv.Rows[iRows].Cells[i].Value);
+                    sb.Append(delimiter);
+                }
+                sb.Remove(sb.Length - 1, 1); // Removes the last delimiter 
+                sb.AppendLine();
+                iRows++;
+            }
+            return sb.ToString();
         }
     }
 }

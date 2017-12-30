@@ -122,6 +122,7 @@
             // 
             // btnExportTxt
             // 
+            this.btnExportTxt.Enabled = false;
             this.btnExportTxt.Location = new System.Drawing.Point(258, 52);
             this.btnExportTxt.Name = "btnExportTxt";
             this.btnExportTxt.Size = new System.Drawing.Size(293, 34);
@@ -132,12 +133,14 @@
             // 
             // btnExportCsv
             // 
+            this.btnExportCsv.Enabled = false;
             this.btnExportCsv.Location = new System.Drawing.Point(258, 92);
             this.btnExportCsv.Name = "btnExportCsv";
             this.btnExportCsv.Size = new System.Drawing.Size(293, 34);
             this.btnExportCsv.TabIndex = 5;
             this.btnExportCsv.Text = "Exporter au format csv";
             this.btnExportCsv.UseVisualStyleBackColor = true;
+            this.btnExportCsv.Click += new System.EventHandler(this.btnExportCsv_Click);
             // 
             // label2
             // 

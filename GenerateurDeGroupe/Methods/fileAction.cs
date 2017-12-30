@@ -58,8 +58,17 @@ namespace GenerateurDeGroupe
 
         public static string FindDirectory()
         {//ToDo
-            string sTemp = "";
-            return sTemp;
+            string sPath = "";
+            FolderBrowserDialog fbdPath = new FolderBrowserDialog();
+            DialogResult result = fbdPath.ShowDialog();
+
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbdPath.SelectedPath))
+            {
+                string[] files = Directory.GetFiles(fbdPath.SelectedPath);
+
+                sPath = fbdPath.SelectedPath.ToString();
+            }
+            return sPath;
         }
     }
 }

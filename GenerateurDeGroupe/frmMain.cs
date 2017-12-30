@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using GenerateurDeGroupe;
 
@@ -26,12 +21,21 @@ namespace Maquette_1
 
         private void panelDragAndDrop_DragDrop(object sender, DragEventArgs e)
         {
-            // "Bastien" -> je m'en occupe
+            string[] FileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            foreach (string sPath in FileList)
+            {
+                lblCheminSource.Text = sPath;
+            }
+            GetValueToDTV(lblCheminSource.Text);
         }
 
         private void panelDragAndDrop_DragEnter(object sender, DragEventArgs e)
         {
             // "Bastien" -> je m'en occupe
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy; // Okay
+            else
+                e.Effect = DragDropEffects.None; // Unknown data, ignore it
         }
 
         private void btnExportTxt_Click(object sender, EventArgs e)//TEST
@@ -53,7 +57,7 @@ namespace Maquette_1
         {
             iNbrPersonne = dtagrdSource.RowCount - 1;//Affecte le nombre de personnes
             lblNombrePersonnes.Text = $"Nombre de personnes : {iNbrPersonne}";
-            btnValidationSource.Visible = true;
+            btnValidationSource.Enabled = true;
             dtagrdSource.Update();//Mise à jour de la datatable source
         }
 
@@ -61,7 +65,7 @@ namespace Maquette_1
         {
             iNbrPersonne = dtagrdSource.RowCount - 1;//Affecte le nombre de personnes
             lblNombrePersonnes.Text = $"Nombre de personnes : {iNbrPersonne}";
-            btnValidationSource.Visible = true;
+            btnValidationSource.Enabled = true;
             dtagrdSource.Update();//Mise à jour de la datatable source
 
 
@@ -80,20 +84,8 @@ namespace Maquette_1
                 return;//Si égal à 0 alors ne fait pas la suite
             }
             lblCheminSource.Text = sPath;//Affichage du chemin dans le label
-            
-            string sline;
-            this.Refresh();
-            System.IO.StreamReader streamCsv = new System.IO.StreamReader(sPath);
-            while ((sline = streamCsv.ReadLine()) != null)//Test si le contenu est vide
-            {
-                dataTable.Rows.Add(sline);//Ajoute les valeurs ligne par ligne
-            }
-            streamCsv.Close();//Fermeture de la stream
 
-            dtagrdSource.DataSource = dataTable;
-            iNbrPersonne = dtagrdSource.RowCount - 1;//Affecte le nombre de personnes
-            lblNombrePersonnes.Text = $"Nombre de personnes : {iNbrPersonne}";
-            btnValidationSource.Visible = true;
+            GetValueToDTV(sPath);
         }
 
         private void btnValidationSource_Click(object sender, EventArgs e)
@@ -230,6 +222,25 @@ namespace Maquette_1
                 iRows++;
             }
             return sb.ToString();
+        }
+        public void GetValueToDTV( string sPath)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = ((DataTable)dtagrdSource.DataSource).Copy();
+            dataTable.Clear();
+            string sline;
+            this.Refresh();
+            System.IO.StreamReader streamCsv = new System.IO.StreamReader(lblCheminSource.Text);
+            while ((sline = streamCsv.ReadLine()) != null)//Test si le contenu est vide
+            {
+                dataTable.Rows.Add(sline);//Ajoute les valeurs ligne par ligne
+            }
+            streamCsv.Close();//Fermeture de la stream
+
+            dtagrdSource.DataSource = dataTable;
+            iNbrPersonne = dtagrdSource.RowCount - 1;//Affecte le nombre de personnes
+            lblNombrePersonnes.Text = $"Nombre de personnes : {iNbrPersonne}";
+            btnValidationSource.Enabled = true;
         }
     }
 }

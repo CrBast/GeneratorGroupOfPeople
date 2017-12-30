@@ -172,6 +172,7 @@
             // 
             // btnValidationSource
             // 
+            this.btnValidationSource.Enabled = false;
             this.btnValidationSource.Location = new System.Drawing.Point(35, 174);
             this.btnValidationSource.Name = "btnValidationSource";
             this.btnValidationSource.Size = new System.Drawing.Size(223, 26);
@@ -179,7 +180,6 @@
             this.btnValidationSource.Text = "Valider la source";
             this.btnValidationSource.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnValidationSource.UseVisualStyleBackColor = true;
-            this.btnValidationSource.Visible = false;
             this.btnValidationSource.Click += new System.EventHandler(this.btnValidationSource_Click);
             // 
             // lblCroissantStatic
@@ -330,11 +330,12 @@
             // 
             // lblCheminSource
             // 
-            this.lblCheminSource.AutoSize = true;
+            this.lblCheminSource.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCheminSource.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblCheminSource.Location = new System.Drawing.Point(58, 23);
+            this.lblCheminSource.Location = new System.Drawing.Point(0, 0);
             this.lblCheminSource.Name = "lblCheminSource";
-            this.lblCheminSource.Size = new System.Drawing.Size(149, 13);
+            this.lblCheminSource.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblCheminSource.Size = new System.Drawing.Size(291, 57);
             this.lblCheminSource.TabIndex = 0;
             this.lblCheminSource.Text = "Veuillez sélectionner un fichier";
             this.lblCheminSource.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -353,6 +354,7 @@
             // 
             // FrmMain
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 438);
@@ -377,7 +379,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtagrdResultat)).EndInit();
             this.panelDragAndDrop.ResumeLayout(false);
-            this.panelDragAndDrop.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

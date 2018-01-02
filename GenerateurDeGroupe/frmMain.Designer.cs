@@ -89,21 +89,21 @@
             // btnouvrir
             // 
             this.btnouvrir.Name = "btnouvrir";
-            this.btnouvrir.Size = new System.Drawing.Size(152, 22);
+            this.btnouvrir.Size = new System.Drawing.Size(146, 22);
             this.btnouvrir.Text = "Ouvrir";
             this.btnouvrir.Click += new System.EventHandler(this.btnouvrir_Click);
             // 
             // restartToolStripMenuItem
             // 
             this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
-            this.restartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.restartToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.restartToolStripMenuItem.Text = "Redémmarrer";
             this.restartToolStripMenuItem.Click += new System.EventHandler(this.restartToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.quitToolStripMenuItem.Text = "Quitter";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -118,7 +118,7 @@
             // deleteSourceToolStripMenuItem
             // 
             this.deleteSourceToolStripMenuItem.Name = "deleteSourceToolStripMenuItem";
-            this.deleteSourceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteSourceToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.deleteSourceToolStripMenuItem.Text = "Effacer source";
             this.deleteSourceToolStripMenuItem.Click += new System.EventHandler(this.deleteSourceToolStripMenuItem_Click);
             // 
@@ -187,7 +187,7 @@
             // lblCroissantStatic
             // 
             this.lblCroissantStatic.AutoSize = true;
-            this.lblCroissantStatic.Location = new System.Drawing.Point(125, 146);
+            this.lblCroissantStatic.Location = new System.Drawing.Point(143, 146);
             this.lblCroissantStatic.Name = "lblCroissantStatic";
             this.lblCroissantStatic.Size = new System.Drawing.Size(58, 15);
             this.lblCroissantStatic.TabIndex = 19;
@@ -206,7 +206,7 @@
             // lblAleatoirementStatic
             // 
             this.lblAleatoirementStatic.AutoSize = true;
-            this.lblAleatoirementStatic.Location = new System.Drawing.Point(125, 131);
+            this.lblAleatoirementStatic.Location = new System.Drawing.Point(143, 131);
             this.lblAleatoirementStatic.Name = "lblAleatoirementStatic";
             this.lblAleatoirementStatic.Size = new System.Drawing.Size(83, 15);
             this.lblAleatoirementStatic.TabIndex = 17;
@@ -250,10 +250,10 @@
             this.rdobtnPersonnesParGroupe.AutoSize = true;
             this.rdobtnPersonnesParGroupe.Location = new System.Drawing.Point(6, 44);
             this.rdobtnPersonnesParGroupe.Name = "rdobtnPersonnesParGroupe";
-            this.rdobtnPersonnesParGroupe.Size = new System.Drawing.Size(217, 19);
+            this.rdobtnPersonnesParGroupe.Size = new System.Drawing.Size(211, 19);
             this.rdobtnPersonnesParGroupe.TabIndex = 12;
             this.rdobtnPersonnesParGroupe.TabStop = true;
-            this.rdobtnPersonnesParGroupe.Text = "Nombre de personnes par groupes";
+            this.rdobtnPersonnesParGroupe.Text = "Nombre de personnes par groupe";
             this.rdobtnPersonnesParGroupe.UseVisualStyleBackColor = true;
             // 
             // tbxNombreGroupes
@@ -266,6 +266,7 @@
             this.tbxNombreGroupes.Text = "3";
             this.tbxNombreGroupes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbxNombreGroupes.Click += new System.EventHandler(this.tbxNombreGroupes_Click);
+            this.tbxNombreGroupes.Validated += new System.EventHandler(this.tbxNombreGroupes_Validated);
             // 
             // tbxNombrePersonneParGroupe
             // 
@@ -277,6 +278,7 @@
             this.tbxNombrePersonneParGroupe.Text = "3";
             this.tbxNombrePersonneParGroupe.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbxNombrePersonneParGroupe.Click += new System.EventHandler(this.tbxNombrePersonneParGroupe_Click);
+            this.tbxNombrePersonneParGroupe.Validated += new System.EventHandler(this.tbxNombrePersonneParGroupe_Validated);
             // 
             // dtagrdSource
             // 

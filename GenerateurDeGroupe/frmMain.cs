@@ -41,16 +41,22 @@ namespace Maquette_1
         private void btnExportTxt_Click(object sender, EventArgs e)//TEST
         {
             string sPath = FileAction.FindDirectory();//Recherche de répertoire d'enregistrement
-            string sTemp = DGVToString(dtagrdResultat, "\t" );
-            DateTime time = DateTime.Now;
-            FileAction.Write($"{sPath}\\{time.AddYears(1).ToString("dd.MM.yyyy_HH.mm")}_ExportGroupes.txt", sTemp);
+            if (sPath != "")
+            {
+                string sTemp = DGVToString(dtagrdResultat, "\t");
+                DateTime time = DateTime.Now;
+                FileAction.Write($"{sPath}\\{time.ToString("dd.MM.yyyy_HH'h'mm")}_ExportGroupes.txt", sTemp);
+            } 
         }
         private void btnExportCsv_Click(object sender, EventArgs e)
         {
             string sPath = FileAction.FindDirectory();//Recherche de répertoire d'enregistrement
-            string sTemp = DGVToString(dtagrdResultat, ";");
-            DateTime time = DateTime.Now;
-            FileAction.Write($"{sPath}\\{time.AddYears(1).ToString("dd.MM.yyyy_HH.mm")}_ExportGroupes.csv", sTemp);
+            if (sPath != "")
+            {
+                string sTemp = DGVToString(dtagrdResultat, ";");
+                DateTime time = DateTime.Now;
+                FileAction.Write($"{sPath}\\{time.ToString("dd.MM.yyyy_HH'h'mm")}_ExportGroupes.csv", sTemp);
+            }
         }
 
         private void dtagrdSource_Click(object sender, EventArgs e)
@@ -78,9 +84,9 @@ namespace Maquette_1
             dataTable.Clear();
             string sPath = "";
             sPath = FileAction.FindFile();
-            if (sPath == "Aucun fichier sélectionné")
+            if (sPath == "Veuillez sélectionner un fichier")
             {
-                lblCheminSource.Text = "Aucun fichier sélectionné";
+                lblCheminSource.Text = "Veuillez sélectionner un fichier";
                 return;//Si égal à 0 alors ne fait pas la suite
             }
             lblCheminSource.Text = sPath;//Affichage du chemin dans le label
@@ -258,6 +264,7 @@ namespace Maquette_1
             dataTable.Clear();
             dtagrdSource.DataSource = dataTable;
             btnValidationSource.Enabled = false;
+            lblCheminSource.Text = "Veuillez sélectionner un fichier";
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -280,6 +287,17 @@ namespace Maquette_1
         {
             rdobtnPersonnesParGroupe.Checked = false;
             rdobtnNombreDeGroupes.Checked = true;
+        }
+
+        private void tbxNombrePersonneParGroupe_Validated(object sender, EventArgs e)
+            try{ Convert.ToInt32(tbxNombrePersonneParGroupe.Text); }
+            catch{ tbxNombrePersonneParGroupe.Text = "3"; }
+        }
+
+        private void tbxNombreGroupes_Validated(object sender, EventArgs e)
+        {
+            try{ Convert.ToInt32(tbxNombreGroupes.Text); }
+            catch{ tbxNombreGroupes.Text = "3"; }
         }
     }
 }

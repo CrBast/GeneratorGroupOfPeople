@@ -21,7 +21,7 @@ namespace GenerateurDeGroupe
             ofd.ShowDialog();
             if (ofd.FileName == "")
             {
-                sPath = "Aucun fichier sélectionné";
+                sPath = "Veuillez sélectionner un fichier";
             }
             else
             {
@@ -60,6 +60,10 @@ namespace GenerateurDeGroupe
                 string[] files = Directory.GetFiles(fbdPath.SelectedPath);
 
                 sPath = fbdPath.SelectedPath.ToString();
+            }
+            if (result == DialogResult.Ignore || result == DialogResult.No ||result == DialogResult.Cancel || result == DialogResult.Abort)
+            {
+                sPath = "";
             }
             return sPath;
         }

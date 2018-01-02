@@ -46,7 +46,7 @@ namespace Maquette_1
                 string sTemp = DGVToString(dtagrdResultat, "\t");
                 DateTime time = DateTime.Now;
                 FileAction.Write($"{sPath}\\{time.ToString("dd.MM.yyyy_HH'h'mm")}_ExportGroupes.txt", sTemp);
-            } 
+            }
         }
         private void btnExportCsv_Click(object sender, EventArgs e)
         {
@@ -186,7 +186,7 @@ namespace Maquette_1
                     }
                     break;
                 case 4:
-                    iNbrGroupe = (int) iNbrPersonne / iNbrPersonneParGroupe + 1;
+                    iNbrGroupe = (int)iNbrPersonne / iNbrPersonneParGroupe + 1;
                     for (int i = 0; i < iNbrPersonne; i++)
                     {
                         if (iNumGroupe > iNbrGroupe)
@@ -237,7 +237,7 @@ namespace Maquette_1
             }
             return sb.ToString();
         }
-        public void GetValueToDTV( string sPath)
+        public void GetValueToDTV(string sPath)
         {
             DataTable dataTable = new DataTable();
             dataTable = ((DataTable)dtagrdSource.DataSource).Copy();
@@ -290,6 +290,7 @@ namespace Maquette_1
         }
 
         private void tbxNombrePersonneParGroupe_Validated(object sender, EventArgs e)
+        { 
             try{ Convert.ToInt32(tbxNombrePersonneParGroupe.Text); }
             catch{ tbxNombrePersonneParGroupe.Text = "3"; }
         }

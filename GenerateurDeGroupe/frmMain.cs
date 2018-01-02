@@ -180,19 +180,27 @@ namespace Maquette_1
                     }
                     break;
                 case 4:
-                    //...;
-                    // ??? Aucune idée ;)
+                    iNbrGroupe = (int) iNbrPersonne / iNbrPersonneParGroupe + 1;
+                    for (int i = 0; i < iNbrPersonne; i++)
+                    {
+                        if (iNumGroupe > iNbrGroupe)
+                        {
+                            iNumGroupe = 1;
+                        }
+                        DataRow row = dataTableResultat.NewRow();
+                        row["IndexHidden"] = Convert.ToSingle(iNumGroupe);
+                        row["Groupe"] = "Groupe " + iNumGroupe;
+                        row["Personne"] = dataTableSource.Rows[i].Field<string>(0);
+                        dataTableResultat.Rows.Add(row);
+                        iNumGroupe++;
+                    }
                     break;
             }
-
             dtagrdResultat.DataSource = dataTableResultat;
             dtagrdResultat.Columns[0].Visible = false; //Cette colonne sert d'index contenant seulement le numéro du groupe
             this.dtagrdResultat.Sort(this.dtagrdResultat.Columns["IndexHidden"], ListSortDirection.Ascending);
-        }
-
-        private void effacerContenuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
+            dtagrdResultat.Columns[2].Width = 176;
+            dtagrdResultat.Columns[1].Width = 66;
         }
 
         private void chkboxAleatoire_Click(object sender, EventArgs e)
@@ -241,6 +249,37 @@ namespace Maquette_1
             iNbrPersonne = dtagrdSource.RowCount - 1;//Affecte le nombre de personnes
             lblNombrePersonnes.Text = $"Nombre de personnes : {iNbrPersonne}";
             btnValidationSource.Enabled = true;
+        }
+
+        private void deleteSourceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = ((DataTable)dtagrdSource.DataSource).Copy();
+            dataTable.Clear();
+            dtagrdSource.DataSource = dataTable;
+            btnValidationSource.Enabled = false;
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void restartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void tbxNombrePersonneParGroupe_Click(object sender, EventArgs e)
+        {
+            rdobtnPersonnesParGroupe.Checked = true;
+            rdobtnNombreDeGroupes.Checked = false;
+        }
+
+        private void tbxNombreGroupes_Click(object sender, EventArgs e)
+        {
+            rdobtnPersonnesParGroupe.Checked = false;
+            rdobtnNombreDeGroupes.Checked = true;
         }
     }
 }

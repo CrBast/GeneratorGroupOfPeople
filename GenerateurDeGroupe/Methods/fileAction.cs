@@ -40,14 +40,7 @@ namespace GenerateurDeGroupe
             maFileStream.Close();
         }
 
-        public static string Read(string sPath)
-        {
-            // TO DO
-            string sContentText = "";
-            return(sContentText);
-        }
-
-        public static void WriteConfig(string sConfigPath)// to do
+        public static void WriteConfig(string sConfigPath)//TODO
         {
             FileStream maFileStream = new FileStream(@"./config.conf", FileMode.Create);  // ouverture du canal de communication (flux)
             StreamWriter monStreamWriter = new StreamWriter(maFileStream, ASCIIEncoding.Default);  // mode écriture
@@ -57,7 +50,7 @@ namespace GenerateurDeGroupe
         }
 
         public static string FindDirectory()
-        {//ToDo
+        {
             string sPath = "";
             FolderBrowserDialog fbdPath = new FolderBrowserDialog();
             DialogResult result = fbdPath.ShowDialog();

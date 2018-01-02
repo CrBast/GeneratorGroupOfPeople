@@ -31,10 +31,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnouvrir = new System.Windows.Forms.ToolStripMenuItem();
-            this.redémmarerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.arrêterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.outilsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.effacerContenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExportTxt = new System.Windows.Forms.Button();
             this.btnExportCsv = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -80,8 +80,8 @@
             // 
             this.fichierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnouvrir,
-            this.redémmarerToolStripMenuItem,
-            this.arrêterToolStripMenuItem});
+            this.restartToolStripMenuItem,
+            this.quitToolStripMenuItem});
             this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
             this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.fichierToolStripMenuItem.Text = "Fichier";
@@ -89,36 +89,38 @@
             // btnouvrir
             // 
             this.btnouvrir.Name = "btnouvrir";
-            this.btnouvrir.Size = new System.Drawing.Size(146, 22);
+            this.btnouvrir.Size = new System.Drawing.Size(152, 22);
             this.btnouvrir.Text = "Ouvrir";
             this.btnouvrir.Click += new System.EventHandler(this.btnouvrir_Click);
             // 
-            // redémmarerToolStripMenuItem
+            // restartToolStripMenuItem
             // 
-            this.redémmarerToolStripMenuItem.Name = "redémmarerToolStripMenuItem";
-            this.redémmarerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.redémmarerToolStripMenuItem.Text = "Redémmarrer";
+            this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
+            this.restartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.restartToolStripMenuItem.Text = "Redémmarrer";
+            this.restartToolStripMenuItem.Click += new System.EventHandler(this.restartToolStripMenuItem_Click);
             // 
-            // arrêterToolStripMenuItem
+            // quitToolStripMenuItem
             // 
-            this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.arrêterToolStripMenuItem.Text = "Quitter";
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Text = "Quitter";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // outilsToolStripMenuItem
             // 
             this.outilsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.effacerContenuToolStripMenuItem});
+            this.deleteSourceToolStripMenuItem});
             this.outilsToolStripMenuItem.Name = "outilsToolStripMenuItem";
             this.outilsToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.outilsToolStripMenuItem.Text = "Outils";
             // 
-            // effacerContenuToolStripMenuItem
+            // deleteSourceToolStripMenuItem
             // 
-            this.effacerContenuToolStripMenuItem.Name = "effacerContenuToolStripMenuItem";
-            this.effacerContenuToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.effacerContenuToolStripMenuItem.Text = "Effacer contenu";
-            this.effacerContenuToolStripMenuItem.Click += new System.EventHandler(this.effacerContenuToolStripMenuItem_Click);
+            this.deleteSourceToolStripMenuItem.Name = "deleteSourceToolStripMenuItem";
+            this.deleteSourceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteSourceToolStripMenuItem.Text = "Effacer source";
+            this.deleteSourceToolStripMenuItem.Click += new System.EventHandler(this.deleteSourceToolStripMenuItem_Click);
             // 
             // btnExportTxt
             // 
@@ -263,6 +265,7 @@
             this.tbxNombreGroupes.TabIndex = 11;
             this.tbxNombreGroupes.Text = "3";
             this.tbxNombreGroupes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbxNombreGroupes.Click += new System.EventHandler(this.tbxNombreGroupes_Click);
             // 
             // tbxNombrePersonneParGroupe
             // 
@@ -273,6 +276,7 @@
             this.tbxNombrePersonneParGroupe.TabIndex = 1;
             this.tbxNombrePersonneParGroupe.Text = "3";
             this.tbxNombrePersonneParGroupe.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbxNombrePersonneParGroupe.Click += new System.EventHandler(this.tbxNombrePersonneParGroupe_Click);
             // 
             // dtagrdSource
             // 
@@ -389,10 +393,10 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnouvrir;
-        private System.Windows.Forms.ToolStripMenuItem redémmarerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem arrêterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem outilsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem effacerContenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteSourceToolStripMenuItem;
         private System.Windows.Forms.Button btnExportTxt;
         private System.Windows.Forms.Button btnExportCsv;
         private System.Windows.Forms.Label label2;

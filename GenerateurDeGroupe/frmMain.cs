@@ -11,7 +11,9 @@ namespace Maquette_1
     {
         int iNbrPersonne = 0;
         public FrmMain()
-        {
+        { 
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             InitializeComponent();
             DataTable mainDataTable = new DataTable(); //Déclaration d'une DataTable
             mainDataTable.Columns.Add("Personne"); // déclaré un colume on peut ajout plusieur colums

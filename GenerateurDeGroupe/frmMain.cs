@@ -47,7 +47,8 @@ namespace Maquette_1
             {
                 string sTemp = DGVToString(dtagrdResultat, "\t");
                 DateTime time = DateTime.Now;
-                FileAction.Write($"{sPath}\\{time.ToString("dd.MM.yyyy_HH'h'mm")}_ExportGroupes.txt", sTemp);
+                string sNamePath = sPath + "\\" + time.ToString("dd.MM.yyyy_HH'h'mm") + "_ExportGroupes.txt";
+                FileAction.Write(sNamePath, sTemp);
             }
         }
         private void btnExportCsv_Click(object sender, EventArgs e)
@@ -57,14 +58,15 @@ namespace Maquette_1
             {
                 string sTemp = DGVToString(dtagrdResultat, ";");
                 DateTime time = DateTime.Now;
-                FileAction.Write($"{sPath}\\{time.ToString("dd.MM.yyyy_HH'h'mm")}_ExportGroupes.csv", sTemp);
+                string sNamePath = sPath + "\\" + time.ToString("dd.MM.yyyy_HH'h'mm") + "_ExportGroupes.csv";
+                FileAction.Write(sNamePath, sTemp);
             }
         }
 
         private void dtagrdSource_Click(object sender, EventArgs e)
         {
             iNbrPersonne = dtagrdSource.RowCount - 1;//Affecte le nombre de personnes
-            lblNombrePersonnes.Text = $"Nombre de personnes : {iNbrPersonne}";
+            lblNombrePersonnes.Text = "Nombre de personnes : " + iNbrPersonne;
             btnValidationSource.Enabled = true;
             dtagrdSource.Update();//Mise à jour de la datatable source
         }
@@ -72,7 +74,7 @@ namespace Maquette_1
         private void dtagrdSource_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             iNbrPersonne = dtagrdSource.RowCount - 1;//Affecte le nombre de personnes
-            lblNombrePersonnes.Text = $"Nombre de personnes : {iNbrPersonne}";
+            lblNombrePersonnes.Text = "Nombre de personnes : " + iNbrPersonne;
             btnValidationSource.Enabled = true;
             dtagrdSource.Update();//Mise à jour de la datatable source
 
@@ -255,7 +257,7 @@ namespace Maquette_1
 
             dtagrdSource.DataSource = dataTable;
             iNbrPersonne = dtagrdSource.RowCount - 1;//Affecte le nombre de personnes
-            lblNombrePersonnes.Text = $"Nombre de personnes : {iNbrPersonne}";
+            lblNombrePersonnes.Text = "Nombre de personnes : " + iNbrPersonne;
             btnValidationSource.Enabled = true;
         }
 

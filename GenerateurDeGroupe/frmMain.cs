@@ -1,4 +1,12 @@
-﻿using System;
+﻿//=====================================================
+// © Kubeah SA - 2018
+// Robiel Tesfazghi - Bastien Crettenand
+// Generateur de groupe
+//
+// Numéro client    :   112
+// Numéro de projet :   2017.112.006
+//=====================================================
+using System;
 using System.ComponentModel;
 using System.Data;
 using System.Text;
@@ -12,12 +20,12 @@ namespace Maquette_1
         int iNbrPersonne = 0;
         public FrmMain()
         { 
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;//Redimensionnement ustilisateur impossible
+            this.MaximizeBox = false;//Bouton "maximise" absent
             InitializeComponent();
             DataTable mainDataTable = new DataTable(); //Déclaration d'une DataTable
             mainDataTable.Columns.Add("Personne"); // déclaré un colume on peut ajout plusieur colums
-            dtagrdSource.DataSource = mainDataTable;
+            dtagrdSource.DataSource = mainDataTable;//Affectation source à la DataGridView
             dtagrdSource.Columns[0].Width = 176; //Agrandissement de la taille des cellules datagridview
         }
 
@@ -28,7 +36,7 @@ namespace Maquette_1
             {
                 lblCheminSource.Text = sPath;
             }
-            GetValueToDTV(lblCheminSource.Text);
+            GetValueToDGV(lblCheminSource.Text);
         }
 
         private void panelDragAndDrop_DragEnter(object sender, DragEventArgs e)
@@ -95,7 +103,7 @@ namespace Maquette_1
             }
             lblCheminSource.Text = sPath;//Affichage du chemin dans le label
 
-            GetValueToDTV(sPath);
+            GetValueToDGV(sPath);
         }
 
         private void btnValidationSource_Click(object sender, EventArgs e)
@@ -106,10 +114,12 @@ namespace Maquette_1
             dtagrdSource.Update();
             DataTable dataTable = new DataTable();
             dataTable = ((DataTable)dtagrdSource.DataSource).Copy();
+            //Vérification du mode de création des groupes
             if (rdobtnNombreDeGroupes.Checked == true && chkboxAleatoire.Checked == true) { iMode = 1; }
             if (rdobtnNombreDeGroupes.Checked == true && chkboxCroissant.Checked == true) { iMode = 2; }
             if (rdobtnPersonnesParGroupe.Checked == true && chkboxAleatoire.Checked == true) { iMode = 3; }
             if (rdobtnPersonnesParGroupe.Checked == true && chkboxCroissant.Checked == true) { iMode = 4; }
+            //============================================
             if (Convert.ToInt32(tbxNombrePersonneParGroupe.Text) < 1) { iNbrPersonneParGroupe = 1; } else { iNbrPersonneParGroupe = Convert.ToInt32(tbxNombrePersonneParGroupe.Text); }
             if (Convert.ToInt32(tbxNombreGroupes.Text) < 1) { iNbrGroupe = 1; } else { iNbrGroupe = Convert.ToInt32(tbxNombreGroupes.Text); }
 
@@ -119,6 +129,11 @@ namespace Maquette_1
             btnExportTxt.Enabled = true;
         }
 
+        //===================================================================================================================================
+        //CreationGroupe
+        //Creation des groupes selon mode donné
+        // IN   :   DataTable(source), Nombre de groupe(int), Nombre personnes(int), Nombre personnes par groupes(int), mode de création(int)
+        // OUT  :   -
         public void CreationGroupe(DataTable dataTableSource, int iNbrGroupe, int NbrPersonne, int iNbrPersonneParGroupe, int iMode)
         {
             //Mode 1 : Se base sur le nombre de groupe                          :   aléatoire
@@ -137,7 +152,6 @@ namespace Maquette_1
             switch (iMode)
             {
                 case 1:
-                    //Méthode pour création groupe avec le nombre de groupe
                     for (int i = 0; i < iNbrPersonne; i++)
                     {
                         int iNbrAlea = rndm.Next(0, dataTableSource.Rows.Count);
@@ -224,6 +238,11 @@ namespace Maquette_1
             chkboxAleatoire.Checked = false;
             chkboxCroissant.Checked = true;
         }
+        //==================================================================
+        //DGVToString
+        //Convertion d'une DataGridView à un string
+        // IN   :   DataGridView, String(caractère de délimitation)
+        // OUT  :   Résultat conversion (string)
         public static string DGVToString(DataGridView dgv, string delimiter)
         {
             int iRows = 0;
@@ -241,7 +260,13 @@ namespace Maquette_1
             }
             return sb.ToString();
         }
-        public void GetValueToDTV(string sPath)
+
+        //=======================================================================================
+        //GetValueToDGV
+        //Import du fichier source dans la DataGridView source
+        // IN   :   Chemin du fichier (string)
+        // OUT  :   -
+        public void GetValueToDGV(string sPath)
         {
             DataTable dataTable = new DataTable();
             dataTable = ((DataTable)dtagrdSource.DataSource).Copy();

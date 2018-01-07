@@ -6,6 +6,11 @@ namespace GenerateurDeGroupe
 {
     class FileAction
     {
+        //=======================================================================================
+        //FindFile
+        //Recherche d'un fichier
+        // IN   :   -
+        // OUT  :   Chemin fichier(string)
         public static string FindFile()
         {
             string sPath = "";
@@ -26,7 +31,11 @@ namespace GenerateurDeGroupe
             return (sPath);
         }
 
-
+        //===================================================================================================================
+        //Write
+        //Ecriture d'un fichier
+        // IN   :   Chemin du nouveau fichier(string), Contenu(string)
+        // OUT  :   -
         public static void Write(string sPath, string sContent)
         {
             FileStream maFileStream = new FileStream(sPath, FileMode.Create);  // ouverture du canal de communication (flux)
@@ -36,15 +45,11 @@ namespace GenerateurDeGroupe
             maFileStream.Close();
         }
 
-        public static void WriteConfig(string sConfigPath)//TODO
-        {
-            FileStream maFileStream = new FileStream(@"./config.conf", FileMode.Create);  // ouverture du canal de communication (flux)
-            StreamWriter monStreamWriter = new StreamWriter(maFileStream, ASCIIEncoding.Default);  // mode écriture
-            monStreamWriter.Write(sConfigPath);
-            monStreamWriter.Close();
-            maFileStream.Close();
-        }
-
+        //=================================================================================================================================
+        //FindDirectory
+        //Recherche d'un répertoire
+        // IN   :   -
+        // OUT  :   Chemin du répertoire(string)
         public static string FindDirectory()
         {
             string sPath = "";

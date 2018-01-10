@@ -119,8 +119,8 @@
             // deleteSourceToolStripMenuItem
             // 
             this.deleteSourceToolStripMenuItem.Name = "deleteSourceToolStripMenuItem";
-            this.deleteSourceToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.deleteSourceToolStripMenuItem.Text = "Effacer source";
+            this.deleteSourceToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.deleteSourceToolStripMenuItem.Text = "Effacer contenu";
             this.deleteSourceToolStripMenuItem.Click += new System.EventHandler(this.deleteSourceToolStripMenuItem_Click);
             // 
             // btnExportTxt

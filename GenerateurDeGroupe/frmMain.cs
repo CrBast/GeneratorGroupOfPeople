@@ -161,7 +161,7 @@ namespace Maquette_1
                         }
                         DataRow row = dataTableResultat.NewRow();
                         row["IndexHidden"] = Convert.ToSingle(iNumGroupe);
-                        row["Groupe"] = "Groupe " + iNumGroupe;
+                        row["Groupe"] = "groupe " + iNumGroupe;
                         row["Personne"] = dataTableSource.Rows[iNbrAlea].Field<string>(0);
                         dataTableResultat.Rows.Add(row);
                         dataTableSource.Rows[iNbrAlea].Delete();
@@ -177,7 +177,7 @@ namespace Maquette_1
                         }
                         DataRow row = dataTableResultat.NewRow();
                         row["IndexHidden"] = Convert.ToSingle(iNumGroupe);
-                        row["Groupe"] = "Groupe " + iNumGroupe;
+                        row["Groupe"] = "groupe " + iNumGroupe;
                         row["Personne"] = dataTableSource.Rows[i].Field<string>(0);
                         dataTableResultat.Rows.Add(row);
                         iNumGroupe++;
@@ -193,7 +193,7 @@ namespace Maquette_1
                                 int iNbrAlea = rndm.Next(0, dataTableSource.Rows.Count);
                                 DataRow row = dataTableResultat.NewRow();
                                 row["IndexHidden"] = Convert.ToSingle(iNumGroupe);
-                                row["Groupe"] = "Groupe " + iNumGroupe;
+                                row["Groupe"] = "groupe " + iNumGroupe;
                                 row["Personne"] = dataTableSource.Rows[iNbrAlea].Field<string>(0);
                                 dataTableResultat.Rows.Add(row);
                                 dataTableSource.Rows[iNbrAlea].Delete();
@@ -213,7 +213,7 @@ namespace Maquette_1
                         }
                         DataRow row = dataTableResultat.NewRow();
                         row["IndexHidden"] = Convert.ToSingle(iNumGroupe);
-                        row["Groupe"] = "Groupe " + iNumGroupe;
+                        row["Groupe"] = "groupe " + iNumGroupe;
                         row["Personne"] = dataTableSource.Rows[i].Field<string>(0);
                         dataTableResultat.Rows.Add(row);
                         iNumGroupe++;
@@ -292,6 +292,16 @@ namespace Maquette_1
             dataTable = ((DataTable)dtagrdSource.DataSource).Copy();
             dataTable.Clear();
             dtagrdSource.DataSource = dataTable;
+
+            /*
+            DataTable dataTable2 = new DataTable();
+            dataTable2 = ((DataTable)dtagrdResultat.DataSource).Copy();
+            dataTable2.Clear();
+            dtagrdResultat.DataSource = dataTable2;
+            */
+            DataTable dataTable2 = new DataTable();
+            dtagrdResultat.DataSource = dataTable2;
+
             btnValidationSource.Enabled = false;
             lblCheminSource.Text = "Veuillez sélectionner un fichier";
         }

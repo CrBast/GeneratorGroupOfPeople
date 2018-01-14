@@ -204,7 +204,9 @@ namespace Maquette_1
                     }
                     break;
                 case 4:
-                    iNbrGroupe = (int)iNbrPersonne / iNbrPersonneParGroupe + 1;
+                    iNbrGroupe = (int)iNbrPersonne / iNbrPersonneParGroupe;
+                    if (iNbrPersonneParGroupe == iNbrPersonne) { }
+                    else { iNbrGroupe++; }  
                     for (int i = 0; i < iNbrPersonne; i++)
                     {
                         if (iNumGroupe > iNbrGroupe)

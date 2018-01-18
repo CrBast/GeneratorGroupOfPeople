@@ -1,4 +1,4 @@
-# GeneratorGroupOfPeople
+# GeneratorGroupOfPeople Version Finale
 **M306_TP_ProjetDeGroupe**
 
 **TP projet de groupe du _module 306_.**
